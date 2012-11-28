@@ -13,19 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LendingTrackerLibrary;
+using LendingTracker.ViewModel;
 
 namespace LendingTracker
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        RentalsVM rentalsVM;
+
         public MainWindow()
         {
             InitializeComponent();
-
-            Lender lender = new Lender();
+            rentalsVM = new RentalsVM();
+            lstviewRentals.ItemsSource = rentalsVM.Rentals;
         }
     }
 }
