@@ -27,5 +27,17 @@ namespace LendingTracker
             rentalsVM = new RentalsVM();
             lstviewRentals.ItemsSource = rentalsVM.Rentals;
         }
+
+        private void btnNewClient_Click(object sender, RoutedEventArgs e)
+        {
+            var newCustWindow = new NewCustomerWindow();
+            newCustWindow.Show();
+        }
+
+        private void btnNewMovie_Click(object sender, RoutedEventArgs e)
+        {
+            var newMovWindow = new NewMovieWindow();
+            newMovWindow.Show();
+        }
     }
 }

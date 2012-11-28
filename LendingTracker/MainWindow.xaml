@@ -1,13 +1,19 @@
 ﻿<Window x:Class="LendingTracker.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="550">
+        Title="Laenutus 'Ratsa Rikkaks'" Height="350" MinHeight="350" MinWidth="550" Width="600">
     <Grid x:Name="gridMain">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="lstviewRentals" Grid.Row="1">
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnNewClient" Content="Uus klient" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewClient_Click"/>
+            <Button x:Name="btnNewMovie" Content="Uus film" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" Width="75" Click="btnNewMovie_Click"/>
+            </StackPanel>
+            <Button x:Name="btnAdmin" Content="Konto" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75"/>
+        <ListView x:Name="lstviewRentals" Grid.Row="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto" Header="Client name" DisplayMemberBinding="{Binding ClientFullName}"/>
