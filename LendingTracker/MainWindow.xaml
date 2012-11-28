@@ -19,22 +19,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <!--<ListBox x:Name="lstviewRentals" Height="136" Width="497">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="1" Text="{Binding ClientName}"/>
-                        <TextBlock Grid.Column="2" Text="{Binding MovieName}"/>
-                        <Separator/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
     </Grid>
 </Window>
