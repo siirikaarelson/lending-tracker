@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Laenutus" EntityNamespace="DBA" ContextNamespace="DBA" Class="LINQtoSQLclassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=Maksim;Initial Catalog=Laenutus;Integrated Security=True" SettingsObjectName="LendingTracker.Properties.Settings" SettingsPropertyName="LaenutusConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TAAVISILDEBERG\SQLEXPRESS;Initial Catalog=Laenutus;Integrated Security=True" SettingsObjectName="LendingTracker.Properties.Settings" SettingsPropertyName="LaenutusConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Catalog" Member="Catalogs">
     <Type Name="Catalog">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

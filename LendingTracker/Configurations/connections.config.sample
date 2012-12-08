@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<connectionStrings>
+  <add name="LendingTracker.Properties.Settings.LendingTrackerDBConnection"
+    connectionString="Data Source=Maksim;Initial Catalog=Laenutus;Integrated Security=True"
+    providerName="System.Data.SqlClient" />
+</connectionStrings>

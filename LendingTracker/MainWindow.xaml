@@ -12,7 +12,7 @@
             <Button x:Name="btnNewClient" Content="Uus klient" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewClient_Click"/>
             <Button x:Name="btnNewMovie" Content="Uus film" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" Width="75" Click="btnNewMovie_Click"/>
             </StackPanel>
-            <Button x:Name="btnAdmin" Content="Konto" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="btnAdmin" Content="Konto" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75"/>
         <ListView x:Name="lstviewRentals" Grid.Row="2">
             <ListView.View>
                 <GridView>
