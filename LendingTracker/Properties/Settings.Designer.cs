@@ -33,5 +33,16 @@ namespace LendingTracker.Properties {
                 return ((string)(this["LendingTrackerDBConnection"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TAAVISILDEBERG\\SQLEXPRESS;Initial Catalog=Laenutus;Integrated Securit" +
+            "y=True")]
+        public string LaenutusConnectionString {
+            get {
+                return ((string)(this["LaenutusConnectionString"]));
+            }
+        }
     }
 }

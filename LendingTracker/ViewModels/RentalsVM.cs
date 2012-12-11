@@ -10,6 +10,7 @@ namespace LendingTracker.ViewModel
     public class RentalsVM
     {
         private List<Rental> _rentals;
+
         public List<Rental> Rentals
         {
             get { return _rentals; }

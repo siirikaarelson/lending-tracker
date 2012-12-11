@@ -22,6 +22,13 @@ namespace LendingTracker
         public NewMovieWindow()
         {
             InitializeComponent();
+
+            
+        }
+
+        private void btnSaveMovie_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
