@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LendingTracker.ViewModel;
+using LendingTrackerLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,16 +21,24 @@ namespace LendingTracker
     /// </summary>
     public partial class NewMovieWindow : Window
     {
+
+        private MoviesVM moviesVM;
+        private Movie _movie;
+
         public NewMovieWindow()
         {
             InitializeComponent();
+            moviesVM = new MoviesVM();
+            _movie = new Movie();
 
-            
+            _movie.Title = "Batman return";
+
+            this.DataContext = _movie;
         }
 
         private void btnSaveMovie_Click(object sender, RoutedEventArgs e)
         {
-
+            moviesVM.saveMovie(_movie);
         }
     }
 }

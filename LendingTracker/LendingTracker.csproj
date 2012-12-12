@@ -81,6 +81,7 @@
       <DependentUpon>NewMovieWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ClientsVM.cs" />
+    <Compile Include="ViewModels\MoviesVM.cs" />
     <Compile Include="ViewModels\RentalsVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

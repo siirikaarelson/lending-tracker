@@ -26,6 +26,8 @@ namespace LendingTracker
         {
             InitializeComponent();
             clientVM = new ClientVM();
+
+           
         }
 
         private void btnSaveClient_Click(object sender, RoutedEventArgs e)
