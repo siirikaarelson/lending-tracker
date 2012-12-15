@@ -15,18 +15,47 @@ using System.Windows.Shapes;
 using LendingTrackerLibrary;
 using LendingTracker.ViewModel;
 using System.Configuration;
+using LendingTracker.View;
 
 namespace LendingTracker
 {
     public partial class MainWindow : Window
     {
         RentalsVM rentalsVM;
+        MoviesVM moviesVM;
 
         public MainWindow()
         {
             InitializeComponent();
             rentalsVM = new RentalsVM();
-            lstviewRentals.ItemsSource = rentalsVM.Rentals;
+            moviesVM = new MoviesVM();
+
+
+            lstViewRentals.ItemsSource = rentalsVM.Rentals;
+            lstViewMovies.ItemsSource = moviesVM.getMovies();
+
+        }
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DisplayLoginScreen();
+        }
+
+        private void DisplayLoginScreen()
+        {
+            LoginWindow loginWindow = new LoginWindow();
+
+            loginWindow.Owner = this;
+            loginWindow.ShowDialog();
+            if (loginWindow.DialogResult.HasValue && loginWindow.DialogResult.Value)
+            {
+                MessageBox.Show("User Logged In");
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void btnNewClient_Click(object sender, RoutedEventArgs e)
@@ -40,5 +69,12 @@ namespace LendingTracker
             var newMovWindow = new NewMovieWindow();
             newMovWindow.Show();
         }
+
+      
+
+       
+
+      
+
     }
 }

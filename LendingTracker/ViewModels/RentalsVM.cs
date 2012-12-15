@@ -16,6 +16,7 @@ namespace LendingTracker.ViewModel
             get { return _rentals; }
             set { _rentals = value; }
         }
+
         public RentalsVM()
         {
             using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())

@@ -43,11 +43,5 @@ namespace LendingTracker.ViewModel
             }
 
         }
-
-
-        internal void saveClient(object p)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
