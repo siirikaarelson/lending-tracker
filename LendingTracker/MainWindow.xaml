@@ -4,10 +4,15 @@
         Title="Laenutus 'Ratsa Rikkaks'" Height="450" MinHeight="350" MinWidth="550" Width="700" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid x:Name="gridMain">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="65*"/>
-            <ColumnDefinition Width="281*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TabControl HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="692" Margin="0,0,0,0" Grid.ColumnSpan="2">
+            <TabItem Header="Debug">
+                <Grid Background="Red" x:Name="gridHelp">
+                    <Button Content="Button" Height="100" Width="75" Click="Button_Click_1"/>
+                </Grid>
+            </TabItem>
             <TabItem Header="Kliendid">
                 <Grid Background="Green" x:Name="gridClients">
                         <Grid.RowDefinitions>
@@ -19,9 +24,19 @@
                             <Button x:Name="btnNewClient" Content="Uus klient" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewClient_Click"/>
                             <Button x:Name="btnNewMovie" Content="Uus film" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" Width="75" Click="btnNewMovie_Click"/>
                         </StackPanel>
-                        <Button x:Name="btnAdmin" Content="Konto" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75"/>
-                      
                        
+                    <ListView x:Name="lstViewClients">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="Auto" Header="Name" DisplayMemberBinding="{Binding Title}"/>
+                                <GridViewColumn Width="Auto" Header="Aasta" DisplayMemberBinding="{Binding Year}"/>
+                                <GridViewColumn Width="Auto" Header="Kirjeldus" DisplayMemberBinding="{Binding Description}"/>
+                                <GridViewColumn Width="Auto" Header="Kommentaar" DisplayMemberBinding="{Binding Comment}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
                 </Grid>
             </TabItem>
             <TabItem Header="Filmid">
@@ -40,7 +55,6 @@
             </TabItem>
             <TabItem Header="Laenutus">
                 <Grid Background="Blue">
-
                     <ListView x:Name="lstViewRentals">
                         <ListView.View>
                             <GridView>
@@ -55,6 +69,7 @@
                     </ListView>
                 </Grid>
             </TabItem>
+          
         </TabControl>
     </Grid>
 </Window>

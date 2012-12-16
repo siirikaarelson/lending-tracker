@@ -19,21 +19,32 @@ namespace LendingTracker.ViewModel
         {
             using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())
             {
+
                 var clients = from x in db.Clients
                               select new Client
                                   (x.id,
-                                  x.Name);
+                                  x.FirstName,
+                                  x.LastName,
+                                  x.Phone,
+                                  x.Email,
+                                  x.IDCode,
+                                  x.Comment, 
+                                  x.VIP,
+                                  x.Problematic,
+                                  x.DocumentNumber
+                              );
                 return clients.ToList();
             }
         }
 
-        public void saveClient(string fullName)
+        public void saveClient(LendingTrackerLibrary.Client clientTO)
         {
 
             DBA.Client client = new DBA.Client();
-            client.Name = fullName;
-            client.Surname = "TESt";
-            client.IDnumber = 12;
+            client.FirstName = clientTO.FirstName;
+            client.LastName = clientTO.LastName;
+            client.DocumentNumber = "";
+            client.IDCode = 12346;
 
             using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())
             {

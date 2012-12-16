@@ -32,7 +32,7 @@ namespace LendingTracker
 
         private void btnSaveClient_Click(object sender, RoutedEventArgs e)
         {
-            clientVM.saveClient(tboxName.Text);
+            
             Close();
         }
     }

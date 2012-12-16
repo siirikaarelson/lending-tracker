@@ -24,21 +24,21 @@ namespace LendingTracker.View
             InitializeComponent();
         }
 
-          private void btnCancel_Click(object sender, RoutedEventArgs e)
-    {
-      DialogResult = false;
-      this.Close();
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            this.Close();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            // Write code here to authenticate user
+            // If authenticated, then set DialogResult=true
+            DialogResult = true;
+            this.Close();
+        }
     }
 
-    private void btnLogin_Click(object sender, RoutedEventArgs e)
-    {
-      // Write code here to authenticate user
-      // If authenticated, then set DialogResult=true
-      DialogResult = true;
-      this.Close();
-    }
-  }
-    
 
-  
+
 }

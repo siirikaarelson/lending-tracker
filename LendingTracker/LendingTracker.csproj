@@ -193,8 +193,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="SQL\" />
+    <Content Include="SQL\DBRentals_script2.sql" />
+    <Content Include="SQL\SQL_laenutus_andmebaasi_skript.sql" />
+    <Content Include="SQL\SQL_laenutus_andmebaasi_testandmed.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

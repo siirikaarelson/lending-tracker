@@ -16,8 +16,6 @@ namespace LendingTrackerLibrary
         private DateTime _endDate;
         private DateTime _startDate;
         private bool _notify;
-        private bool _vip;
-        private bool _problematic;
         private string _comment;
 
         public string MovieName
@@ -55,23 +53,13 @@ namespace LendingTrackerLibrary
             get { return _notify; }
             set { _notify = value; }
         }
-        public string Vip
-        {
-            get {
-                if (_vip == false) return "No";
-                else return "Yes";
-            }
-        }
+     
         public string ClientFullName
         {
             get { return _clientName+_clientSurname; }
             set { _clientFullName = value; }
         }
-        public bool Problematic
-        {
-            get { return _problematic; }
-            set { _problematic = value; }
-        }
+     
         public string Comment
         {
             get { return _comment; }
@@ -79,7 +67,7 @@ namespace LendingTrackerLibrary
         }
 
         public Rental(int id, string name, string surname, DateTime startdate, 
-            DateTime enddate, bool notify, bool vip, bool problematic, string comment, string moviename)
+            DateTime enddate, bool notify, string comment, string moviename)
         {
             this._id = id;
             this._clientName = name;
@@ -87,8 +75,6 @@ namespace LendingTrackerLibrary
             this._startDate = startdate;
             this._endDate = enddate;
             this._notify = notify;
-            this._vip = vip;
-            this._problematic = problematic;
             this._comment = comment;
             this._movieName = moviename;
         }

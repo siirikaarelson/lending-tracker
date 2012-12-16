@@ -22,13 +22,15 @@
   <Table Name="dbo.Clients" Member="Clients">
     <Type Name="Client">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="Surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="true" />
-      <Column Name="IDnumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DOCnumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Phone" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Storage="_Name" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Storage="_Surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="true" />
+      <Column Name="ID_code" Member="IDCode" Storage="_IDnumber" Type="System.Int64" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Comment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VIP" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="Problematic" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="DocumentNumber" Type="System.String" CanBeNull="false" />
       <Association Name="Client_Rental" Member="Rentals" ThisKey="id" OtherKey="ClientID" Type="Rental" />
     </Type>
   </Table>
@@ -40,8 +42,6 @@
       <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
       <Column Name="EndDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
       <Column Name="Notify" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="VIP" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Problematic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Comment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Catalog_Rental" Member="Catalog" ThisKey="MovieID" OtherKey="id" Type="Catalog" IsForeignKey="true" />
       <Association Name="Client_Rental" Member="Client" ThisKey="ClientID" OtherKey="id" Type="Client" IsForeignKey="true" />

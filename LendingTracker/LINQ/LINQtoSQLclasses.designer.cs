@@ -463,15 +463,19 @@ namespace DBA
 		
 		private string _Surname;
 		
-		private int _IDnumber;
+		private long _IDnumber;
 		
-		private int _DOCnumber;
-		
-		private int _Phone;
+		private string _Phone;
 		
 		private string _Email;
 		
 		private string _Comment;
+		
+		private bool _VIP;
+		
+		private bool _Problematic;
+		
+		private string _DocumentNumber;
 		
 		private EntitySet<Rental> _Rentals;
 		
@@ -481,20 +485,24 @@ namespace DBA
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnSurnameChanging(string value);
-    partial void OnSurnameChanged();
-    partial void OnIDnumberChanging(int value);
-    partial void OnIDnumberChanged();
-    partial void OnDOCnumberChanging(int value);
-    partial void OnDOCnumberChanged();
-    partial void OnPhoneChanging(int value);
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnIDCodeChanging(long value);
+    partial void OnIDCodeChanged();
+    partial void OnPhoneChanging(string value);
     partial void OnPhoneChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
     partial void OnCommentChanging(string value);
     partial void OnCommentChanged();
+    partial void OnVIPChanging(bool value);
+    partial void OnVIPChanged();
+    partial void OnProblematicChanging(bool value);
+    partial void OnProblematicChanged();
+    partial void OnDocumentNumberChanging(string value);
+    partial void OnDocumentNumberChanged();
     #endregion
 		
 		public Client()
@@ -524,7 +532,7 @@ namespace DBA
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string Name
+		public string FirstName
 		{
 			get
 			{
@@ -534,17 +542,17 @@ namespace DBA
 			{
 				if ((this._Name != value))
 				{
-					this.OnNameChanging(value);
+					this.OnFirstNameChanging(value);
 					this.SendPropertyChanging();
 					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
 				}
 			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Surname", DbType="NVarChar(50) NOT NULL")]
-		public string Surname
+		public string LastName
 		{
 			get
 			{
@@ -554,17 +562,17 @@ namespace DBA
 			{
 				if ((this._Surname != value))
 				{
-					this.OnSurnameChanging(value);
+					this.OnLastNameChanging(value);
 					this.SendPropertyChanging();
 					this._Surname = value;
-					this.SendPropertyChanged("Surname");
-					this.OnSurnameChanged();
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDnumber", DbType="Int NOT NULL")]
-		public int IDnumber
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ID_code", Storage="_IDnumber")]
+		public long IDCode
 		{
 			get
 			{
@@ -574,37 +582,17 @@ namespace DBA
 			{
 				if ((this._IDnumber != value))
 				{
-					this.OnIDnumberChanging(value);
+					this.OnIDCodeChanging(value);
 					this.SendPropertyChanging();
 					this._IDnumber = value;
-					this.SendPropertyChanged("IDnumber");
-					this.OnIDnumberChanged();
+					this.SendPropertyChanged("IDCode");
+					this.OnIDCodeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOCnumber", DbType="Int NOT NULL")]
-		public int DOCnumber
-		{
-			get
-			{
-				return this._DOCnumber;
-			}
-			set
-			{
-				if ((this._DOCnumber != value))
-				{
-					this.OnDOCnumberChanging(value);
-					this.SendPropertyChanging();
-					this._DOCnumber = value;
-					this.SendPropertyChanged("DOCnumber");
-					this.OnDOCnumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="Int NOT NULL")]
-		public int Phone
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", CanBeNull=false)]
+		public string Phone
 		{
 			get
 			{
@@ -659,6 +647,66 @@ namespace DBA
 					this._Comment = value;
 					this.SendPropertyChanged("Comment");
 					this.OnCommentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VIP")]
+		public bool VIP
+		{
+			get
+			{
+				return this._VIP;
+			}
+			set
+			{
+				if ((this._VIP != value))
+				{
+					this.OnVIPChanging(value);
+					this.SendPropertyChanging();
+					this._VIP = value;
+					this.SendPropertyChanged("VIP");
+					this.OnVIPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Problematic")]
+		public bool Problematic
+		{
+			get
+			{
+				return this._Problematic;
+			}
+			set
+			{
+				if ((this._Problematic != value))
+				{
+					this.OnProblematicChanging(value);
+					this.SendPropertyChanging();
+					this._Problematic = value;
+					this.SendPropertyChanged("Problematic");
+					this.OnProblematicChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentNumber", CanBeNull=false)]
+		public string DocumentNumber
+		{
+			get
+			{
+				return this._DocumentNumber;
+			}
+			set
+			{
+				if ((this._DocumentNumber != value))
+				{
+					this.OnDocumentNumberChanging(value);
+					this.SendPropertyChanging();
+					this._DocumentNumber = value;
+					this.SendPropertyChanged("DocumentNumber");
+					this.OnDocumentNumberChanged();
 				}
 			}
 		}
@@ -727,10 +775,6 @@ namespace DBA
 		
 		private bool _Notify;
 		
-		private bool _VIP;
-		
-		private bool _Problematic;
-		
 		private string _Comment;
 		
 		private EntityRef<Catalog> _Catalog;
@@ -753,10 +797,6 @@ namespace DBA
     partial void OnEndDateChanged();
     partial void OnNotifyChanging(bool value);
     partial void OnNotifyChanged();
-    partial void OnVIPChanging(bool value);
-    partial void OnVIPChanged();
-    partial void OnProblematicChanging(bool value);
-    partial void OnProblematicChanged();
     partial void OnCommentChanging(string value);
     partial void OnCommentChanged();
     #endregion
@@ -892,46 +932,6 @@ namespace DBA
 					this._Notify = value;
 					this.SendPropertyChanged("Notify");
 					this.OnNotifyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VIP", DbType="Bit NOT NULL")]
-		public bool VIP
-		{
-			get
-			{
-				return this._VIP;
-			}
-			set
-			{
-				if ((this._VIP != value))
-				{
-					this.OnVIPChanging(value);
-					this.SendPropertyChanging();
-					this._VIP = value;
-					this.SendPropertyChanged("VIP");
-					this.OnVIPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Problematic", DbType="Bit NOT NULL")]
-		public bool Problematic
-		{
-			get
-			{
-				return this._Problematic;
-			}
-			set
-			{
-				if ((this._Problematic != value))
-				{
-					this.OnProblematicChanging(value);
-					this.SendPropertyChanging();
-					this._Problematic = value;
-					this.SendPropertyChanged("Problematic");
-					this.OnProblematicChanged();
 				}
 			}
 		}

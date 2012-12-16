@@ -27,19 +27,19 @@ namespace LendingTracker
         public MainWindow()
         {
             InitializeComponent();
-            rentalsVM = new RentalsVM();
-            moviesVM = new MoviesVM();
+           // rentalsVM = new RentalsVM();
+           // moviesVM = new MoviesVM();
 
 
-            lstViewRentals.ItemsSource = rentalsVM.Rentals;
-            lstViewMovies.ItemsSource = moviesVM.getMovies();
+           // lstViewRentals.ItemsSource = rentalsVM.Rentals;
+           // lstViewMovies.ItemsSource = moviesVM.getMovies();
 
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DisplayLoginScreen();
+           DisplayLoginScreen();
         }
 
         private void DisplayLoginScreen()
@@ -69,6 +69,22 @@ namespace LendingTracker
             var newMovWindow = new NewMovieWindow();
             newMovWindow.Show();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DBA.LINQtoSQLclassesDataContext dataContext = new DBA.LINQtoSQLclassesDataContext();
+
+            if (dataContext.DatabaseExists())
+            {
+                MessageBox.Show("Database olemas, kustutan");
+                dataContext.DeleteDatabase();
+             
+            }
+
+            dataContext.CreateDatabase();
+        }
+
+     
 
       
 
