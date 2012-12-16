@@ -26,6 +26,8 @@ namespace LendingTracker.ViewModel
                                   x.FirstName,
                                   x.LastName,
                                   x.Phone,
+
+
                                   x.Email,
                                   x.IDCode,
                                   x.Comment, 
