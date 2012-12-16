@@ -26,14 +26,14 @@
         <elementListCompartment Id="ede63a40-a76a-434c-92dc-7268034d4505" absoluteBounds="3.89, 1.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.95274983723958); (3.875 : 1.95274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.95274983723958); (3.875 : 1.95274983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQtoSQLclassesDataContext/Catalog/Catalog_Rental" />
       <nodes>
         <classShapeMoniker Id="699ddc53-b283-4ee4-834e-176331d784a5" />
         <classShapeMoniker Id="7cef7fb8-6870-4dc4-8a28-6d65d55eae5a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.86620198567708); (4.875 : 5.86620198567708); (4.875 : 3.03049967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.86620198567708); (4.875 : 5.86620198567708); (4.875 : 3.03049967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LINQtoSQLclassesDataContext/Client/Client_Rental" />
       <nodes>
         <classShapeMoniker Id="229a2d58-3083-4caf-a877-868ba044a867" />

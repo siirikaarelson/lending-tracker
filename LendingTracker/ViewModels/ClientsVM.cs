@@ -43,14 +43,17 @@ namespace LendingTracker.ViewModel
             DBA.Client client = new DBA.Client();
             client.FirstName = clientTO.FirstName;
             client.LastName = clientTO.LastName;
-            client.DocumentNumber = "";
-            client.IDCode = 12346;
+            client.DocumentNumber = clientTO.DocumentNumber;
+            client.IDCode = clientTO.IDCode;
+            client.Phone = clientTO.Phone;
+            client.Problematic = clientTO.Problematic;
+            client.VIP = clientTO.VIP;
+            client.Comment = clientTO.Comment;
 
             using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())
             {
                 db.Clients.InsertOnSubmit(client);
                 db.SubmitChanges();
-                Console.WriteLine(client.id);
             }
 
         }

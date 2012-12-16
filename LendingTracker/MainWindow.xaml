@@ -1,20 +1,16 @@
 ﻿<Window x:Class="LendingTracker.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Laenutus 'Ratsa Rikkaks'" Height="450" MinHeight="350" MinWidth="550" Width="700" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Laenutus 'Ratsa Rikkaks'" Height="600" MinHeight="60" MinWidth="800" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid x:Name="gridMain">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TabControl HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="692" Margin="0,0,0,0" Grid.ColumnSpan="2">
-            <TabItem Header="Debug">
-                <Grid Background="Red" x:Name="gridHelp">
-                    <Button Content="Button" Height="100" Width="75" Click="Button_Click_1"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Kliendid">
-                <Grid Background="Green" x:Name="gridClients">
+        <TabControl HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="800" Margin="0,0,0,0" Grid.ColumnSpan="2">
+           
+            <TabItem Header="Kliendid" Height="23" VerticalAlignment="Top" GotFocus="Clients_TabOnFocus">
+                <Grid x:Name="gridClients" Height="388" VerticalAlignment="Top">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="6*"/>
@@ -25,12 +21,16 @@
                             <Button x:Name="btnNewMovie" Content="Uus film" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" Width="75" Click="btnNewMovie_Click"/>
                         </StackPanel>
                        
-                    <ListView x:Name="lstViewClients">
+                    <ListView x:Name="lstViewClients" Grid.Row="1">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Width="Auto" Header="Name" DisplayMemberBinding="{Binding Title}"/>
-                                <GridViewColumn Width="Auto" Header="Aasta" DisplayMemberBinding="{Binding Year}"/>
-                                <GridViewColumn Width="Auto" Header="Kirjeldus" DisplayMemberBinding="{Binding Description}"/>
+                                <GridViewColumn Width="Auto" Header="Eesnimi" DisplayMemberBinding="{Binding FirstName}"/>
+                                <GridViewColumn Width="Auto" Header="Perenimi" DisplayMemberBinding="{Binding LastName}"/>
+                                <GridViewColumn Width="Auto" Header="Telefon" DisplayMemberBinding="{Binding Phone}"/>
+                                <GridViewColumn Width="Auto" Header="ID kood" DisplayMemberBinding="{Binding IDCode}"/>
+                                <GridViewColumn Width="Auto" Header="VIP" DisplayMemberBinding="{Binding VIP}"/>
+                                <GridViewColumn Width="Auto" Header="Probleemne" DisplayMemberBinding="{Binding Problematic}"/>
+
                                 <GridViewColumn Width="Auto" Header="Kommentaar" DisplayMemberBinding="{Binding Comment}"/>
                             </GridView>
                         </ListView.View>
@@ -69,7 +69,11 @@
                     </ListView>
                 </Grid>
             </TabItem>
-          
+            <TabItem Header="Debug">
+                <Grid Background="Red" x:Name="gridHelp">
+                    <Button Content="Reset database" Height="100" Width="75" Click="Button_Click_1"/>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

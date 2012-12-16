@@ -23,16 +23,20 @@ namespace LendingTracker
     {
         RentalsVM rentalsVM;
         MoviesVM moviesVM;
+        ClientVM clientsVM;
 
         public MainWindow()
         {
             InitializeComponent();
+            clientsVM = new ClientVM();
            // rentalsVM = new RentalsVM();
            // moviesVM = new MoviesVM();
 
 
            // lstViewRentals.ItemsSource = rentalsVM.Rentals;
            // lstViewMovies.ItemsSource = moviesVM.getMovies();
+
+            lstViewClients.ItemsSource = clientsVM.getClients();
 
         }
 
@@ -67,6 +71,7 @@ namespace LendingTracker
         private void btnNewMovie_Click(object sender, RoutedEventArgs e)
         {
             var newMovWindow = new NewMovieWindow();
+            newMovWindow.Owner = this;
             newMovWindow.Show();
         }
 
@@ -84,6 +89,13 @@ namespace LendingTracker
             dataContext.CreateDatabase();
         }
 
+    
+        private void Clients_TabOnFocus(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Sain fookuse");
+        }
+
+       
      
 
       

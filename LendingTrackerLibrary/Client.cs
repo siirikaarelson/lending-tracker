@@ -8,12 +8,13 @@ namespace LendingTrackerLibrary
 {
     public class Client
     {
+
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public long IDCode { get; set; }
+        public long? IDCode { get; set; }
         public string Comment { get; set; }
         public bool VIP { get; set; }
         public bool Problematic { get; set; }
@@ -21,7 +22,7 @@ namespace LendingTrackerLibrary
 
 
         public Client(int idIn, string firstName, string lastName, string phone, 
-            string email, long idCode, string comment, bool vip, bool problematic, string documentNumber)
+            string email, long? idCode, string comment, bool vip, bool problematic, string documentNumber)
         {
             this.Id = idIn;
             this.FirstName = firstName;
@@ -35,6 +36,13 @@ namespace LendingTrackerLibrary
             this.DocumentNumber = documentNumber;
 
         }
+
+        public Client()
+        {
+          
+        }
+
+
 
     }
 }

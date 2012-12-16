@@ -463,7 +463,7 @@ namespace DBA
 		
 		private string _Surname;
 		
-		private long _IDnumber;
+		private System.Nullable<long> _IDnumber;
 		
 		private string _Phone;
 		
@@ -489,7 +489,7 @@ namespace DBA
     partial void OnFirstNameChanged();
     partial void OnLastNameChanging(string value);
     partial void OnLastNameChanged();
-    partial void OnIDCodeChanging(long value);
+    partial void OnIDCodeChanging(System.Nullable<long> value);
     partial void OnIDCodeChanged();
     partial void OnPhoneChanging(string value);
     partial void OnPhoneChanged();
@@ -572,7 +572,7 @@ namespace DBA
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ID_code", Storage="_IDnumber")]
-		public long IDCode
+		public System.Nullable<long> IDCode
 		{
 			get
 			{
@@ -591,7 +591,7 @@ namespace DBA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone")]
 		public string Phone
 		{
 			get
@@ -691,7 +691,7 @@ namespace DBA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentNumber", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentNumber")]
 		public string DocumentNumber
 		{
 			get

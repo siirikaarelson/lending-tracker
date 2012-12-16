@@ -24,13 +24,13 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FirstName" Storage="_Name" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="LastName" Storage="_Surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="true" />
-      <Column Name="ID_code" Member="IDCode" Storage="_IDnumber" Type="System.Int64" CanBeNull="false" />
-      <Column Name="Phone" Type="System.String" CanBeNull="false" />
+      <Column Name="ID_code" Member="IDCode" Storage="_IDnumber" Type="System.Int64" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Comment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="VIP" Type="System.Boolean" CanBeNull="false" />
       <Column Name="Problematic" Type="System.Boolean" CanBeNull="false" />
-      <Column Name="DocumentNumber" Type="System.String" CanBeNull="false" />
+      <Column Name="DocumentNumber" Type="System.String" CanBeNull="true" />
       <Association Name="Client_Rental" Member="Rentals" ThisKey="id" OtherKey="ClientID" Type="Rental" />
     </Type>
   </Table>
