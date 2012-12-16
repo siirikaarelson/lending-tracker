@@ -36,7 +36,7 @@ namespace LendingTracker
            // lstViewRentals.ItemsSource = rentalsVM.Rentals;
            // lstViewMovies.ItemsSource = moviesVM.getMovies();
 
-            lstViewClients.ItemsSource = clientsVM.getClients();
+           // lstViewClients.ItemsSource = clientsVM.getClients();
 
         }
 
@@ -52,7 +52,7 @@ namespace LendingTracker
 
             loginWindow.Owner = this;
             loginWindow.ShowDialog();
-            if (loginWindow.DialogResult.HasValue && loginWindow.DialogResult.Value)
+            if (!loginWindow.DialogResult.HasValue ||  !loginWindow.DialogResult.Value)
             {
               
             }
@@ -65,6 +65,7 @@ namespace LendingTracker
         private void btnNewClient_Click(object sender, RoutedEventArgs e)
         {
             var newCustWindow = new NewCustomerWindow();
+            newCustWindow.Owner = this;
             newCustWindow.Show();
         }
 
