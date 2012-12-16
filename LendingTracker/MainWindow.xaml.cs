@@ -54,7 +54,7 @@ namespace LendingTracker
             loginWindow.ShowDialog();
             if (loginWindow.DialogResult.HasValue && loginWindow.DialogResult.Value)
             {
-                MessageBox.Show("User Logged In");
+              
             }
             else
             {
@@ -87,12 +87,7 @@ namespace LendingTracker
             }
 
             dataContext.CreateDatabase();
-        }
-
-    
-        private void Clients_TabOnFocus(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Sain fookuse");
+            MessageBox.Show("Uus baas genereeritud");
         }
 
        

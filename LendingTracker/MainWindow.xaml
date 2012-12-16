@@ -9,7 +9,7 @@
         </Grid.ColumnDefinitions>
         <TabControl HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="800" Margin="0,0,0,0" Grid.ColumnSpan="2">
            
-            <TabItem Header="Kliendid" Height="23" VerticalAlignment="Top" GotFocus="Clients_TabOnFocus">
+            <TabItem Header="Kliendid" Height="23" VerticalAlignment="Top">
                 <Grid x:Name="gridClients" Height="388" VerticalAlignment="Top">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
