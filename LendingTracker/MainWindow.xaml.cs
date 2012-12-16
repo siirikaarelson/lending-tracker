@@ -52,7 +52,7 @@ namespace LendingTracker
 
             loginWindow.Owner = this;
             loginWindow.ShowDialog();
-            if (!loginWindow.DialogResult.HasValue ||  !loginWindow.DialogResult.Value)
+            if (loginWindow.DialogResult.HasValue && loginWindow.DialogResult.Value)
             {
               
             }
