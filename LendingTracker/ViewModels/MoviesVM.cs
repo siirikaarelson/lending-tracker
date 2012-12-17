@@ -1,4 +1,5 @@
 ﻿using LendingTrackerLibrary;
+using LendingTrackerLibrary.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,38 +10,33 @@ namespace LendingTracker.ViewModel
 {
     public class MoviesVM
     {
+        private DBA.LINQtoSQLclassesDataContext _dataContext;
+        private ObservableMovies _moviesList;
        
-        public MoviesVM()
+        public MoviesVM(DBA.LINQtoSQLclassesDataContext dataContext)
         {
-            
+            _dataContext = dataContext;
         }
 
-        public List<Movie> getMovies()
+        public ObservableMovies getMovies()
         {
-            using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())
-            {
-                var clients = from x in db.Catalogs
-                              select new Movie (x.id, x.Title, x.Descr, x.Comment, x.Year);
-                return clients.ToList();
-            }
+            _moviesList = new ObservableMovies(_dataContext);
+            return _moviesList;
         }
 
         public void saveMovie(Movie movieIn)
         {
 
-            DBA.Catalog movie = new DBA.Catalog();
+            DBA.Movie movie = new DBA.Movie();
             movie.Title = movieIn.Title;
             movie.Year = movieIn.Year;
             movie.Descr = movieIn.Description;
             movie.Comment = movieIn.Comment;
             movie.Genre = "TODO";
-         
-            using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())
-            {
-                db.Catalogs.InsertOnSubmit(movie);
-                db.SubmitChanges();
-                Console.WriteLine(movie.id);
-            }
+
+            _dataContext.Movies.InsertOnSubmit(movie);
+            _dataContext.SubmitChanges();
+            _moviesList.Add(movie);
 
         }
 

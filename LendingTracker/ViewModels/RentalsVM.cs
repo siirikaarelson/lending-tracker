@@ -21,17 +21,17 @@ namespace LendingTracker.ViewModel
         {
             using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())
             {
-                var rentals = from x in db.Rentals
-                              select new Rental
-                                  (x.id,
-                                  x.Client.FirstName,
-                                  x.Client.LastName,
-                                  x.StartDate,
-                                  x.EndDate,
-                                  x.Notify,
-                                  x.Comment,
-                                  x.Catalog.Title);
-                this._rentals = rentals.ToList();
+                //var rentals = from x in db.Rentals
+                //              select new Rental
+                //                  (x.id,
+                //                  x.Client.FirstName,
+                //                  x.Client.LastName,
+                //                  x.StartDate,
+                //                  x.EndDate,
+                //                  x.Notify,
+                //                  x.Comment,
+                //                  x.Catalog.Title);
+                //this._rentals = rentals.ToList();
             }
         }
     }

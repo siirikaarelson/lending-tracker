@@ -30,9 +30,9 @@ namespace DBA
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertCatalog(Catalog instance);
-    partial void UpdateCatalog(Catalog instance);
-    partial void DeleteCatalog(Catalog instance);
+    partial void InsertMovie(Movie instance);
+    partial void UpdateMovie(Movie instance);
+    partial void DeleteMovie(Movie instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
@@ -74,11 +74,11 @@ namespace DBA
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Catalog> Catalogs
+		public System.Data.Linq.Table<Movie> Movies
 		{
 			get
 			{
-				return this.GetTable<Catalog>();
+				return this.GetTable<Movie>();
 			}
 		}
 		
@@ -108,7 +108,7 @@ namespace DBA
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Catalog")]
-	public partial class Catalog : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Movie : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -149,7 +149,7 @@ namespace DBA
     partial void OnCommentChanged();
     #endregion
 		
-		public Catalog()
+		public Movie()
 		{
 			this._Rentals = new EntitySet<Rental>(new Action<Rental>(this.attach_Rentals), new Action<Rental>(this.detach_Rentals));
 			OnCreated();
@@ -331,13 +331,13 @@ namespace DBA
 		private void attach_Rentals(Rental entity)
 		{
 			this.SendPropertyChanging();
-			entity.Catalog = this;
+			entity.Movie = this;
 		}
 		
 		private void detach_Rentals(Rental entity)
 		{
 			this.SendPropertyChanging();
-			entity.Catalog = null;
+			entity.Movie = null;
 		}
 	}
 	
@@ -777,7 +777,7 @@ namespace DBA
 		
 		private string _Comment;
 		
-		private EntityRef<Catalog> _Catalog;
+		private EntityRef<Movie> _Catalog;
 		
 		private EntityRef<Client> _Client;
 		
@@ -803,7 +803,7 @@ namespace DBA
 		
 		public Rental()
 		{
-			this._Catalog = default(EntityRef<Catalog>);
+			this._Catalog = default(EntityRef<Movie>);
 			this._Client = default(EntityRef<Client>);
 			OnCreated();
 		}
@@ -957,7 +957,7 @@ namespace DBA
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Catalog_Rental", Storage="_Catalog", ThisKey="MovieID", OtherKey="id", IsForeignKey=true)]
-		public Catalog Catalog
+		public Movie Movie
 		{
 			get
 			{
@@ -965,7 +965,7 @@ namespace DBA
 			}
 			set
 			{
-				Catalog previousValue = this._Catalog.Entity;
+				Movie previousValue = this._Catalog.Entity;
 				if (((previousValue != value) 
 							|| (this._Catalog.HasLoadedOrAssignedValue == false)))
 				{
@@ -985,7 +985,7 @@ namespace DBA
 					{
 						this._MovieID = default(int);
 					}
-					this.SendPropertyChanged("Catalog");
+					this.SendPropertyChanged("Movie");
 				}
 			}
 		}

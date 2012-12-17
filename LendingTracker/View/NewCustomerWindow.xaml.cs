@@ -1,4 +1,5 @@
-﻿using LendingTracker.ViewModel;
+﻿
+using LendingTracker.ViewModel;
 using LendingTrackerLibrary;
 using System;
 using System.Collections.Generic;
@@ -21,22 +22,24 @@ namespace LendingTracker
     /// </summary>
     public partial class NewCustomerWindow : Window
     {
-        private ClientVM clientVM;
 
-        private Client client = new Client();
+        private Client client;
 
-        public NewCustomerWindow()
+        private ClientVM _clientVM;
+
+        public NewCustomerWindow(ClientVM clientVM)
         {
             InitializeComponent();
-            clientVM = new ClientVM();
+            client = new Client();
+
+            _clientVM = clientVM;
             this.DataContext = client;
 
-           
         }
 
         private void btnSaveClient_Click(object sender, RoutedEventArgs e)
         {
-            clientVM.saveClient(client);      
+           _clientVM.saveClient(client);      
             Close();
           
         }

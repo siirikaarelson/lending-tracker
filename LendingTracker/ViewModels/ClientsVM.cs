@@ -1,4 +1,5 @@
 ﻿using LendingTrackerLibrary;
+using LendingTrackerLibrary.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,32 +10,18 @@ namespace LendingTracker.ViewModel
 {
     public class ClientVM
     {
-       
-        public ClientVM()
+        private ObservableClients _clientList;
+        private DBA.LINQtoSQLclassesDataContext _dataContext;
+      
+        public ClientVM(DBA.LINQtoSQLclassesDataContext dataContext)
         {
-            
+            _dataContext = dataContext;
         }
 
-        public List<Client> getClients()
+        public ObservableClients getClients()
         {
-            using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())
-            {
-
-                var clients = from x in db.Clients
-                              select new Client
-                                  (x.id,
-                                  x.FirstName,
-                                  x.LastName,
-                                  x.Phone,
-                                  x.Email,
-                                  x.IDCode,
-                                  x.Comment, 
-                                  x.VIP,
-                                  x.Problematic,
-                                  x.DocumentNumber
-                              );
-                return clients.ToList();
-            }
+            _clientList = new ObservableClients(_dataContext);
+            return _clientList;
         }
 
         public void saveClient(LendingTrackerLibrary.Client clientTO)
@@ -50,11 +37,10 @@ namespace LendingTracker.ViewModel
             client.VIP = clientTO.VIP;
             client.Comment = clientTO.Comment;
 
-            using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())
-            {
-                db.Clients.InsertOnSubmit(client);
-                db.SubmitChanges();
-            }
+            _dataContext.Clients.InsertOnSubmit(client);
+            _dataContext.SubmitChanges();
+            _clientList.Add(client);
+            
 
         }
     }

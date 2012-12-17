@@ -14,7 +14,7 @@ namespace LendingTracker
     /// </summary>
     public partial class App : Application
     {
+
        
-      
     }
 }

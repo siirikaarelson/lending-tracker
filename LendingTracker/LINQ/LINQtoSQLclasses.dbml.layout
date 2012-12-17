@@ -3,7 +3,7 @@
   <DataContextMoniker Name="/LINQtoSQLclassesDataContext" />
   <nestedChildShapes>
     <classShape Id="699ddc53-b283-4ee4-834e-176331d784a5" absoluteBounds="0.75, 0.875, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/LINQtoSQLclassesDataContext/Catalog" />
+      <DataClassMoniker Name="/LINQtoSQLclassesDataContext/Movie" />
       <nestedChildShapes>
         <elementListCompartment Id="f094220d-ae48-416a-a06b-9c077344f938" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
@@ -27,7 +27,7 @@
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(2.75 : 1.95274983723958); (3.875 : 1.95274983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/LINQtoSQLclassesDataContext/Catalog/Catalog_Rental" />
+      <AssociationMoniker Name="/LINQtoSQLclassesDataContext/Movie/Catalog_Rental" />
       <nodes>
         <classShapeMoniker Id="699ddc53-b283-4ee4-834e-176331d784a5" />
         <classShapeMoniker Id="7cef7fb8-6870-4dc4-8a28-6d65d55eae5a" />

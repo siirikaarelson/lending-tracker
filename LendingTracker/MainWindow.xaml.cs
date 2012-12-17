@@ -16,34 +16,30 @@ using LendingTrackerLibrary;
 using LendingTracker.ViewModel;
 using System.Configuration;
 using LendingTracker.View;
+using LendingTrackerLibrary.Data;
 
 namespace LendingTracker
 {
     public partial class MainWindow : Window
     {
-        RentalsVM rentalsVM;
-        MoviesVM moviesVM;
-        ClientVM clientsVM;
 
+        private DBA.LINQtoSQLclassesDataContext _dataContext = new DBA.LINQtoSQLclassesDataContext();
+        private RentalsVM _rentalsVM;
+        private MoviesVM _moviesVM;
+        private ClientVM _clientVM;
+
+        
         public MainWindow()
         {
             InitializeComponent();
-            clientsVM = new ClientVM();
-           // rentalsVM = new RentalsVM();
-           // moviesVM = new MoviesVM();
-
-
-           // lstViewRentals.ItemsSource = rentalsVM.Rentals;
-           // lstViewMovies.ItemsSource = moviesVM.getMovies();
-
-           // lstViewClients.ItemsSource = clientsVM.getClients();
-
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           DisplayLoginScreen();
+           //DisplayLoginScreen();
+
+
         }
 
         private void DisplayLoginScreen()
@@ -64,39 +60,75 @@ namespace LendingTracker
 
         private void btnNewClient_Click(object sender, RoutedEventArgs e)
         {
-            var newCustWindow = new NewCustomerWindow();
+            var newCustWindow = new NewCustomerWindow(getClientVM());
             newCustWindow.Owner = this;
             newCustWindow.Show();
         }
 
         private void btnNewMovie_Click(object sender, RoutedEventArgs e)
         {
-            var newMovWindow = new NewMovieWindow();
+            var newMovWindow = new NewMovieWindow(getMoviesVM());
             newMovWindow.Owner = this;
             newMovWindow.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private ClientVM getClientVM()
         {
-            DBA.LINQtoSQLclassesDataContext dataContext = new DBA.LINQtoSQLclassesDataContext();
-
-            if (dataContext.DatabaseExists())
+            if (_clientVM == null)
             {
-                MessageBox.Show("Database olemas, kustutan");
-                dataContext.DeleteDatabase();
-             
+                _clientVM = new ClientVM(_dataContext);
             }
 
-            dataContext.CreateDatabase();
+            return _clientVM;
+        }
+
+
+        private MoviesVM getMoviesVM()
+        {
+            if (_moviesVM == null)
+            {
+                _moviesVM = new MoviesVM(_dataContext);
+            }
+
+            return _moviesVM;
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (tabClients.IsSelected)
+            {
+                lstViewClients.ItemsSource = getClientVM().getClients();
+            }
+
+            if (tabMovies.IsSelected)
+            {
+                lstViewMovies.ItemsSource = getClientVM().getClients();
+            }
+
+            if (tabRentals.IsSelected)
+            {
+               
+            }
+
+        }
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            _clientVM = null;
+            _moviesVM = null;
+            _rentalsVM = null;
+
+            if (_dataContext.DatabaseExists())
+            {
+                MessageBox.Show("Database olemas, kustutan");
+                _dataContext.DeleteDatabase();
+            }
+
+            _dataContext.CreateDatabase();
             MessageBox.Show("Uus baas genereeritud");
         }
 
-       
-     
-
-      
-
-       
 
       
 

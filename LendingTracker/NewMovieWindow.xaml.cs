@@ -22,23 +22,22 @@ namespace LendingTracker
     public partial class NewMovieWindow : Window
     {
 
-        private MoviesVM moviesVM;
+        private MoviesVM _moviesVM;
         private Movie _movie;
 
-        public NewMovieWindow()
+        public NewMovieWindow(MoviesVM moviesVM)
         {
             InitializeComponent();
-            moviesVM = new MoviesVM();
+            
+            _moviesVM = moviesVM;
             _movie = new Movie();
-
-            _movie.Title = "Batman return";
-
             this.DataContext = _movie;
         }
 
         private void btnSaveMovie_Click(object sender, RoutedEventArgs e)
         {
-            moviesVM.saveMovie(_movie);
+            _moviesVM.saveMovie(_movie);
+            Close();
         }
     }
 }

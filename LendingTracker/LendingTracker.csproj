@@ -74,6 +74,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\ObservableMovies.cs" />
+    <Compile Include="Data\ObservableClients.cs" />
     <Compile Include="NewMovieWindow.xaml.cs">
       <DependentUpon>NewMovieWindow.xaml</DependentUpon>
     </Compile>
