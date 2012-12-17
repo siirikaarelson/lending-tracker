@@ -37,7 +37,7 @@ namespace LendingTracker
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           //DisplayLoginScreen();
+           DisplayLoginScreen();
         }
 
         private void DisplayLoginScreen()
@@ -70,6 +70,14 @@ namespace LendingTracker
             newMovWindow.Show();
         }
 
+        private void btnNewRental_Click(object sender, RoutedEventArgs e)
+        {
+            var newRentalWindow = new AddRentalWindow(getRentalsVM());
+            newRentalWindow.Owner = this;
+            newRentalWindow.Show();
+        }
+
+
         private ClientVM getClientVM()
         {
             if (_clientVM == null)
@@ -91,6 +99,16 @@ namespace LendingTracker
             return _moviesVM;
         }
 
+        private RentalsVM getRentalsVM()
+        {
+            if (_rentalsVM == null)
+            {
+                _rentalsVM = new RentalsVM(_dataContext);
+            }
+
+            return _rentalsVM;
+        }
+
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (tabClients.IsSelected)
@@ -105,7 +123,7 @@ namespace LendingTracker
 
             if (tabRentals.IsSelected)
             {
-               
+                lstViewRentals.ItemsSource = getRentalsVM().getRentals();
             }
 
         }

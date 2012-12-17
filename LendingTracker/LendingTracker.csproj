@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\ObservableRentals.cs" />
     <Compile Include="Data\ObservableMovies.cs" />
     <Compile Include="Data\ObservableClients.cs" />
     <Compile Include="NewMovieWindow.xaml.cs">
@@ -82,6 +83,9 @@
     <Compile Include="ViewModels\ClientsVM.cs" />
     <Compile Include="ViewModels\MoviesVM.cs" />
     <Compile Include="ViewModels\RentalsVM.cs" />
+    <Compile Include="View\AddRentalWindow.xaml.cs">
+      <DependentUpon>AddRentalWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -108,6 +112,10 @@
     <Page Include="NewMovieWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddRentalWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\LoginWindow.xaml">
       <SubType>Designer</SubType>

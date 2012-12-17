@@ -78,5 +78,10 @@ namespace LendingTrackerLibrary
             this._comment = comment;
             this._movieName = moviename;
         }
+
+
+        public Rental()
+        {
+        }
     }
 }

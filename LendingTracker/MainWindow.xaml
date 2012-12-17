@@ -31,7 +31,6 @@
                                 <GridViewColumn Width="Auto" Header="ID kood" DisplayMemberBinding="{Binding IDCode}"/>
                                 <GridViewColumn Width="Auto" Header="VIP" DisplayMemberBinding="{Binding VIP}"/>
                                 <GridViewColumn Width="Auto" Header="Probleemne" DisplayMemberBinding="{Binding Problematic}"/>
-
                                 <GridViewColumn Width="Auto" Header="Kommentaar" DisplayMemberBinding="{Binding Comment}"/>
                             </GridView>
                         </ListView.View>
@@ -63,7 +62,14 @@
             </TabItem>
             <TabItem x:Name="tabRentals" Header="Laenutus">
                 <Grid Background="Blue">
-                    <ListView x:Name="lstViewRentals">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0">
+                        <Button x:Name="btnNewRental" Content="Lisa laentus" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewRental_Click"/>
+                    </StackPanel>
+                    <ListView x:Name="lstViewRentals" Grid.Row="1">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="Auto" Header="Client name" DisplayMemberBinding="{Binding ClientFullName}"/>

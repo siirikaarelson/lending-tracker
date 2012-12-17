@@ -1,4 +1,5 @@
 ﻿using LendingTrackerLibrary;
+using LendingTrackerLibrary.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,30 +10,24 @@ namespace LendingTracker.ViewModel
 {
     public class RentalsVM
     {
-        private List<Rental> _rentals;
-
-        public List<Rental> Rentals
+        private DBA.LINQtoSQLclassesDataContext _dataContext;
+        private ObservableRentals _rentalsList;
+       
+        public RentalsVM(DBA.LINQtoSQLclassesDataContext dataContext)
         {
-            get { return _rentals; }
-            set { _rentals = value; }
+            _dataContext = dataContext;
         }
 
-        public RentalsVM()
+        public ObservableRentals getRentals()
         {
-            using (DBA.LINQtoSQLclassesDataContext db = new DBA.LINQtoSQLclassesDataContext())
-            {
-                //var rentals = from x in db.Rentals
-                //              select new Rental
-                //                  (x.id,
-                //                  x.Client.FirstName,
-                //                  x.Client.LastName,
-                //                  x.StartDate,
-                //                  x.EndDate,
-                //                  x.Notify,
-                //                  x.Comment,
-                //                  x.Catalog.Title);
-                //this._rentals = rentals.ToList();
-            }
+            _rentalsList = new ObservableRentals(_dataContext);
+            return _rentalsList;
+        }
+
+
+        public void saveRental(Rental rentalTO)
+        {
+
         }
     }
 }
