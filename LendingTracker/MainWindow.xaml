@@ -16,12 +16,10 @@
                 <Grid x:Name="gridClients" Height="388" VerticalAlignment="Top">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="6*"/>
-                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal">
-                            <Button x:Name="btnNewClient" Content="Uus klient" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewClient_Click"/>
-                            <Button x:Name="btnNewMovie" Content="Uus film" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" Width="75" Click="btnNewMovie_Click"/>
+                            <Button x:Name="btnNewClient" Content="Uus klient" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewClient_Click"/>            
                         </StackPanel>
                        
                     <ListView x:Name="lstViewClients" Grid.Row="1">
@@ -44,7 +42,14 @@
             </TabItem>
             <TabItem x:Name="tabMovies" Header="Filmid">
                 <Grid Background="#FFE5E5E5">
-                    <ListView x:Name="lstViewMovies">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btnNewMovie" Content="Uus film" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewMovie_Click"/>
+                    </StackPanel>
+                    <ListView x:Name="lstViewMovies" Grid.Row="1">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="Auto" Header="Pealkiri" DisplayMemberBinding="{Binding Title}"/>

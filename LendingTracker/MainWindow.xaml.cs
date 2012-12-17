@@ -38,8 +38,6 @@ namespace LendingTracker
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
            //DisplayLoginScreen();
-
-
         }
 
         private void DisplayLoginScreen()
@@ -102,7 +100,7 @@ namespace LendingTracker
 
             if (tabMovies.IsSelected)
             {
-                lstViewMovies.ItemsSource = getClientVM().getClients();
+                lstViewMovies.ItemsSource = getMoviesVM().getMovies();
             }
 
             if (tabRentals.IsSelected)
