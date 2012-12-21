@@ -1,45 +1,56 @@
 ﻿<Window x:Class="LendingTracker.NewCustomerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Lisa uus klient" Height="400" Width="600" 
+        Title="Lisa uus klient" Height="375" Width="310" 
         WindowStartupLocation="CenterOwner"
-        ShowInTaskbar="False"
-        SizeToContent="WidthAndHeight" ResizeMode="NoResize" Topmost="True">
+        ShowInTaskbar="False" ResizeMode="NoResize">
 
-    <Grid Margin="0,3,2,-3">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="tboxFirstName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
-        <Label x:Name="lblFirstName" Grid.Column="0" Content="Eesnimi*" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.075,-0.269"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="tboxFirstName" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Bottom"/>
+        <Label x:Name="lblFirstName" Grid.Row="0" Grid.Column="0" Content="Eesnimi*" VerticalAlignment="Bottom"/>
 
-        <TextBox x:Name="tboxLastName" Grid.Column="1" Text="{Binding LastName}" HorizontalAlignment="Left" Height="23" Margin="10,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
-        <Label x:Name="lblLastName" Grid.Column="0" Content="Perenimi*" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.075,-0.269"/>
+        <TextBox x:Name="tboxLastName" Grid.Row="1" Grid.Column="1"/>
+        <Label x:Name="lblLastName" Grid.Row="1" Grid.Column="0" Content="Perenimi*"/>
 
-        <TextBox x:Name="tboxPhone" Grid.Column="1" Text="{Binding Phone}" HorizontalAlignment="Left" Height="23" Margin="10,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
-        <Label x:Name="lblPhone" Grid.Column="0" Content="Telefon*" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.075,-0.269"/>
+        <TextBox x:Name="tboxPhone" Grid.Row="2" Grid.Column="1" Width="200"/>
+        <Label x:Name="lblPhone" Grid.Row="2" Grid.Column="0" Content="Telefon*"/>
 
-        <TextBox x:Name="tboxEmail" Grid.Column="1" Text="{Binding Email}" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
-        <Label x:Name="lblEmail" Grid.Column="0" Content="Email*" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.075,-0.269"/>
+        <TextBox x:Name="tboxEmail" Grid.Row="3"  Grid.Column="1"/>
+        <Label x:Name="lblEmail" Grid.Row="3"  Grid.Column="0" Content="Email*"/>
 
-        <TextBox x:Name="tboxIdCode" Grid.Column="1" Text="{Binding IDCode}" HorizontalAlignment="Left" Height="23" Margin="10,130,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
-        <Label x:Name="lblIdCode" Grid.Column="0" Content="ID kood" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.075,-0.269"/>
+        <TextBox x:Name="tboxIdCode" Grid.Row="4" Grid.Column="1"/>
+        <Label x:Name="lblIdCode" Grid.Row="4" Grid.Column="0" Content="ID kood"/>
 
-        <TextBox x:Name="tboxDocumentCode" Grid.Column="1" Text="{Binding DocumentNumber}" HorizontalAlignment="Left" Height="23" Margin="10,159,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
-        <Label x:Name="lblDocumentCode" Grid.Column="0" Content="Dok. number*" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.075,-0.269"/>
+        <TextBox x:Name="tboxDocumentCode" Grid.Row="5" Grid.Column="1"/>
+        <Label x:Name="lblDocumentCode" Grid.Row="5" Grid.Column="0" Content="Dok. number*"/>
 
-        <CheckBox x:Name="chBoxProblematic" Grid.Column="1" IsChecked="{Binding Problematic}" HorizontalAlignment="Left" Height="23" Margin="10,255,0,0" VerticalAlignment="Top" />
-        <Label x:Name="lblProblematic" Grid.Column="0" Content="Probleemne" HorizontalAlignment="right" Margin="0,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.075,-0.269"/>
+        <TextBox x:Name="tboxComment" Grid.Row="6" Grid.Column="1" Height="100" TextWrapping="Wrap"/>
+        <Label x:Name="lblComment" Grid.Row="6" Grid.Column="0" Content="Kommentaar"/>
+    
+        <CheckBox x:Name="chBoxProblematic" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center"/>
+        <Label x:Name="lblProblematic" Grid.Row="7" Grid.Column="0" Content="Probleemne" HorizontalAlignment="Right"/>
 
-        <CheckBox x:Name="chBoxVIP" Grid.Column="1" IsChecked="{Binding VIP}" HorizontalAlignment="Left" Height="23" Margin="10,283,0,0" VerticalAlignment="Top" />
-        <Label x:Name="lblVIP" Grid.Column="0" Content="VIP" HorizontalAlignment="Right" Margin="0,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.075,-0.269"/>
+        <CheckBox x:Name="chBoxVIP" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center"/>
+        <Label x:Name="lblVIP" Grid.Row="8" Grid.Column="0" Content="VIP" HorizontalAlignment="Right"/>
 
-        <TextBox x:Name="tboxComment" Grid.Column="1" Text="{Binding Comment}" HorizontalAlignment="Left" Height="54" Margin="10,192,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Label x:Name="lblComment" Grid.Column="0" Content="Kommentaar" HorizontalAlignment="right" Margin="10,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.075,-0.269"/>
-
-        <Button x:Name="btnCancel" Grid.Column="1" Content="Tühista" HorizontalAlignment="Right" Margin="0,318,30,20" VerticalAlignment="Top" Width="75" Click="btnCancelClient_Click"/>
-        <Button x:Name="btnSave" Grid.Column="1" Content="Salvesta" HorizontalAlignment="Left" Margin="10,318,0,20" VerticalAlignment="Top" Width="75" Click="btnSaveClient_Click"/>
+        <Button x:Name="btnCancel" Grid.Row="9" Grid.Column="1" Content="Tühista" Click="btnCancelClient_Click" Width="50" HorizontalAlignment="Right"/>
+        <Button x:Name="btnSave" IsDefault="True" Grid.Row="9" Grid.Column="1" Content="Salvesta" Click="btnSaveClient_Click" Width="80" HorizontalAlignment="Center"/>
 
     </Grid>
 </Window>

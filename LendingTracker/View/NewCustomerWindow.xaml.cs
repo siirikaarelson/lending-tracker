@@ -30,7 +30,6 @@ namespace LendingTracker
             InitializeComponent();
             client = new DBA.Client();
             _clientVM = clientVM;
-            this.DataContext = client;
         }
 
         private void btnSaveClient_Click(object sender, RoutedEventArgs e)
