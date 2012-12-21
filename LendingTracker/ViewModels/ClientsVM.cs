@@ -24,7 +24,7 @@ namespace LendingTracker.ViewModel
             return _clientList;
         }
 
-        public void saveClient(LendingTrackerLibrary.Client clientTO)
+        public void saveClient(DBA.Client clientTO)
         {
 
             DBA.Client client = new DBA.Client();
