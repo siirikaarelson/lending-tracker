@@ -2,6 +2,7 @@
 using LendingTrackerLibrary.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace LendingTracker.ViewModel
     {
         private ObservableClients _clientList;
         private DBA.LINQtoSQLclassesDataContext _dataContext;
-      
+
         public ClientVM(DBA.LINQtoSQLclassesDataContext dataContext)
         {
             _dataContext = dataContext;
@@ -26,22 +27,23 @@ namespace LendingTracker.ViewModel
 
         public void saveClient(DBA.Client clientTO)
         {
-
-            DBA.Client client = new DBA.Client();
-            client.FirstName = clientTO.FirstName;
-            client.LastName = clientTO.LastName;
-            client.DocumentNumber = clientTO.DocumentNumber;
-            client.IDCode = clientTO.IDCode;
-            client.Phone = clientTO.Phone;
-            client.Problematic = clientTO.Problematic;
-            client.VIP = clientTO.VIP;
-            client.Comment = clientTO.Comment;
-
-            _dataContext.Clients.InsertOnSubmit(client);
+            _dataContext.Clients.InsertOnSubmit(clientTO);
             _dataContext.SubmitChanges();
-            _clientList.Add(client);
-            
+            _clientList.Add(clientTO);
 
+        }
+
+
+        public DBA.Client getClient(long clientId)
+        {
+            var query = (from x in _dataContext.Clients where x.id == clientId select x).FirstOrDefault();
+            return query;
+        }
+
+
+        internal void updateClient(DBA.Client _client)
+        {
+            _dataContext.SubmitChanges();
         }
     }
 }

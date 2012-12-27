@@ -22,7 +22,7 @@
                             <Button x:Name="btnNewClient" Content="Uus klient" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewClient_Click"/>            
                         </StackPanel>
                        
-                    <ListView x:Name="lstViewClients" Grid.Row="1">
+                    <ListView x:Name="lstViewClients" Grid.Row="1" Margin="0,0,0,-220" MouseDoubleClick="lstViewClients_MouseDoubleClick">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="Auto" Header="Eesnimi" DisplayMemberBinding="{Binding FirstName}"/>
@@ -48,7 +48,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="btnNewMovie" Content="Uus film" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewMovie_Click"/>
                     </StackPanel>
-                    <ListView x:Name="lstViewMovies" Grid.Row="1">
+                    <ListView x:Name="lstViewMovies" Grid.Row="1" MouseDoubleClick="lstViewMovies_MouseDoubleClick">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="Auto" Header="Pealkiri" DisplayMemberBinding="{Binding Title}"/>
@@ -62,14 +62,18 @@
             </TabItem>
             <TabItem x:Name="tabRentals" Header="Laenutus">
                 <Grid Background="Blue">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="69*"/>
+                        <ColumnDefinition Width="721*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2">
                         <Button x:Name="btnNewRental" Content="Lisa laentus" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewRental_Click"/>
                     </StackPanel>
-                    <ListView x:Name="lstViewRentals" Grid.Row="1">
+                    <ListView x:Name="lstViewRentals" Grid.Row="1" Grid.ColumnSpan="2">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="Auto" Header="Client name" DisplayMemberBinding="{Binding ClientFullName}"/>

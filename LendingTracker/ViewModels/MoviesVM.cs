@@ -24,21 +24,16 @@ namespace LendingTracker.ViewModel
             return _moviesList;
         }
 
-        public void saveMovie(Movie movieIn)
+        public void saveMovie(DBA.Movie movie)
         {
-
-            DBA.Movie movie = new DBA.Movie();
-            movie.Title = movieIn.Title;
-            movie.Year = movieIn.Year;
-            movie.Descr = movieIn.Description;
-            movie.Comment = movieIn.Comment;
-            movie.Genre = "TODO";
-
             _dataContext.Movies.InsertOnSubmit(movie);
             _dataContext.SubmitChanges();
             _moviesList.Add(movie);
-
         }
 
+        public void updateMovie(DBA.Movie _movie)
+        {
+            _dataContext.SubmitChanges();
+        }
     }
 }

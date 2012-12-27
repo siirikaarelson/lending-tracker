@@ -23,21 +23,83 @@ namespace LendingTracker
     {
 
         private MoviesVM _moviesVM;
-        private Movie _movie;
-
+        private DBA.Movie _movie;
+       
         public NewMovieWindow(MoviesVM moviesVM)
         {
             InitializeComponent();
             
             _moviesVM = moviesVM;
-            _movie = new Movie();
+            _movie = new DBA.Movie();
             this.DataContext = _movie;
+        }
+
+        public NewMovieWindow(MoviesVM moviesVM, DBA.Movie movie)
+        {
+            InitializeComponent();
+            this._moviesVM = moviesVM;
+            this._movie = movie;
+
+            this.DataContext = movie;
         }
 
         private void btnSaveMovie_Click(object sender, RoutedEventArgs e)
         {
-            _moviesVM.saveMovie(_movie);
-            Close();
+
+            if (!validate())
+            {
+                _movie.Title = tboxTitle.Text.Trim();
+                _movie.Description = tboxDescription.Text.Trim();
+                _movie.Comment = tboxComment.Text.Trim();
+                _movie.Year = int.Parse(tboxYear.Text.Trim());
+
+                if ( _movie.id == 0)
+                {
+                     _moviesVM.saveMovie(_movie);
+                }
+                else
+                {
+                     _moviesVM.updateMovie(_movie);
+                }
+
+                Close();
+            }
+
+          
+        }
+
+        /* 
+         * Validate methtod
+         */ 
+        private bool validate()
+        {
+
+            bool hasError = false;
+
+            if (tboxTitle.Text.Trim() == "")
+            {
+                lblTitle.Foreground = System.Windows.Media.Brushes.Red;
+                hasError = true;
+            }
+            else 
+            { 
+                lblTitle.Foreground = System.Windows.Media.Brushes.Black; 
+            }
+
+            int year;
+            if (tboxYear.Text.Trim() == "" && !int.TryParse(tboxYear.Text.Trim(), out year))
+            {
+                lblYear.Foreground = System.Windows.Media.Brushes.Red;
+                hasError = true;
+            }
+            else
+            {
+                lblYear.Foreground = System.Windows.Media.Brushes.Black;
+            }
+
+
+
+            return hasError;
         }
     }
 }

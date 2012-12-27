@@ -36,12 +36,12 @@ namespace DBA
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
-    partial void InsertClient(Client instance);
-    partial void UpdateClient(Client instance);
-    partial void DeleteClient(Client instance);
     partial void InsertRental(Rental instance);
     partial void UpdateRental(Rental instance);
     partial void DeleteRental(Rental instance);
+    partial void InsertClient(Client instance);
+    partial void UpdateClient(Client instance);
+    partial void DeleteClient(Client instance);
     #endregion
 		
 		public LINQtoSQLclassesDataContext() : 
@@ -90,19 +90,19 @@ namespace DBA
 			}
 		}
 		
-		public System.Data.Linq.Table<Client> Clients
-		{
-			get
-			{
-				return this.GetTable<Client>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Rental> Rentals
 		{
 			get
 			{
 				return this.GetTable<Rental>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Client> Clients
+		{
+			get
+			{
+				return this.GetTable<Client>();
 			}
 		}
 	}
@@ -117,15 +117,15 @@ namespace DBA
 		
 		private string _Title;
 		
-		private int _Year;
+		private System.Nullable<int> _Year;
 		
 		private string _Genre;
 		
-		private byte _Quantity;
-		
-		private string _Descr;
+		private System.Nullable<byte> _Quantity;
 		
 		private string _Comment;
+		
+		private string _Description;
 		
 		private EntitySet<Rental> _Rentals;
 		
@@ -137,16 +137,16 @@ namespace DBA
     partial void OnidChanged();
     partial void OnTitleChanging(string value);
     partial void OnTitleChanged();
-    partial void OnYearChanging(int value);
+    partial void OnYearChanging(System.Nullable<int> value);
     partial void OnYearChanged();
     partial void OnGenreChanging(string value);
     partial void OnGenreChanged();
-    partial void OnQuantityChanging(byte value);
+    partial void OnQuantityChanging(System.Nullable<byte> value);
     partial void OnQuantityChanged();
-    partial void OnDescrChanging(string value);
-    partial void OnDescrChanged();
     partial void OnCommentChanging(string value);
     partial void OnCommentChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
     #endregion
 		
 		public Movie()
@@ -175,7 +175,7 @@ namespace DBA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", CanBeNull=false)]
 		public string Title
 		{
 			get
@@ -195,8 +195,8 @@ namespace DBA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int NOT NULL")]
-		public int Year
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year")]
+		public System.Nullable<int> Year
 		{
 			get
 			{
@@ -215,7 +215,7 @@ namespace DBA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genre", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genre")]
 		public string Genre
 		{
 			get
@@ -235,8 +235,8 @@ namespace DBA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="TinyInt NOT NULL")]
-		public byte Quantity
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity")]
+		public System.Nullable<byte> Quantity
 		{
 			get
 			{
@@ -255,27 +255,7 @@ namespace DBA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descr", DbType="NVarChar(50)")]
-		public string Descr
-		{
-			get
-			{
-				return this._Descr;
-			}
-			set
-			{
-				if ((this._Descr != value))
-				{
-					this.OnDescrChanging(value);
-					this.SendPropertyChanging();
-					this._Descr = value;
-					this.SendPropertyChanged("Descr");
-					this.OnDescrChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment")]
 		public string Comment
 		{
 			get
@@ -295,7 +275,27 @@ namespace DBA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Catalog_Rental", Storage="_Rentals", ThisKey="id", OtherKey="MovieID")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Movie_Rental", Storage="_Rentals", ThisKey="id", OtherKey="MovieID")]
 		public EntitySet<Rental> Rentals
 		{
 			get
@@ -448,312 +448,6 @@ namespace DBA
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Clients")]
-	public partial class Client : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _Name;
-		
-		private string _Surname;
-		
-		private System.Nullable<long> _IDnumber;
-		
-		private string _Phone;
-		
-		private string _Email;
-		
-		private string _Comment;
-		
-		private bool _VIP;
-		
-		private bool _Problematic;
-		
-		private string _DocumentNumber;
-		
-		private EntitySet<Rental> _Rentals;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnFirstNameChanging(string value);
-    partial void OnFirstNameChanged();
-    partial void OnLastNameChanging(string value);
-    partial void OnLastNameChanged();
-    partial void OnIDCodeChanging(System.Nullable<long> value);
-    partial void OnIDCodeChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnCommentChanging(string value);
-    partial void OnCommentChanged();
-    partial void OnVIPChanging(bool value);
-    partial void OnVIPChanged();
-    partial void OnProblematicChanging(bool value);
-    partial void OnProblematicChanged();
-    partial void OnDocumentNumberChanging(string value);
-    partial void OnDocumentNumberChanged();
-    #endregion
-		
-		public Client()
-		{
-			this._Rentals = new EntitySet<Rental>(new Action<Rental>(this.attach_Rentals), new Action<Rental>(this.detach_Rentals));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string FirstName
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnFirstNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("FirstName");
-					this.OnFirstNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Surname", DbType="NVarChar(50) NOT NULL")]
-		public string LastName
-		{
-			get
-			{
-				return this._Surname;
-			}
-			set
-			{
-				if ((this._Surname != value))
-				{
-					this.OnLastNameChanging(value);
-					this.SendPropertyChanging();
-					this._Surname = value;
-					this.SendPropertyChanged("LastName");
-					this.OnLastNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ID_code", Storage="_IDnumber")]
-		public System.Nullable<long> IDCode
-		{
-			get
-			{
-				return this._IDnumber;
-			}
-			set
-			{
-				if ((this._IDnumber != value))
-				{
-					this.OnIDCodeChanging(value);
-					this.SendPropertyChanging();
-					this._IDnumber = value;
-					this.SendPropertyChanged("IDCode");
-					this.OnIDCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this.OnPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="NVarChar(50)")]
-		public string Comment
-		{
-			get
-			{
-				return this._Comment;
-			}
-			set
-			{
-				if ((this._Comment != value))
-				{
-					this.OnCommentChanging(value);
-					this.SendPropertyChanging();
-					this._Comment = value;
-					this.SendPropertyChanged("Comment");
-					this.OnCommentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VIP")]
-		public bool VIP
-		{
-			get
-			{
-				return this._VIP;
-			}
-			set
-			{
-				if ((this._VIP != value))
-				{
-					this.OnVIPChanging(value);
-					this.SendPropertyChanging();
-					this._VIP = value;
-					this.SendPropertyChanged("VIP");
-					this.OnVIPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Problematic")]
-		public bool Problematic
-		{
-			get
-			{
-				return this._Problematic;
-			}
-			set
-			{
-				if ((this._Problematic != value))
-				{
-					this.OnProblematicChanging(value);
-					this.SendPropertyChanging();
-					this._Problematic = value;
-					this.SendPropertyChanged("Problematic");
-					this.OnProblematicChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentNumber")]
-		public string DocumentNumber
-		{
-			get
-			{
-				return this._DocumentNumber;
-			}
-			set
-			{
-				if ((this._DocumentNumber != value))
-				{
-					this.OnDocumentNumberChanging(value);
-					this.SendPropertyChanging();
-					this._DocumentNumber = value;
-					this.SendPropertyChanged("DocumentNumber");
-					this.OnDocumentNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Rental", Storage="_Rentals", ThisKey="id", OtherKey="ClientID")]
-		public EntitySet<Rental> Rentals
-		{
-			get
-			{
-				return this._Rentals;
-			}
-			set
-			{
-				this._Rentals.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Rentals(Rental entity)
-		{
-			this.SendPropertyChanging();
-			entity.Client = this;
-		}
-		
-		private void detach_Rentals(Rental entity)
-		{
-			this.SendPropertyChanging();
-			entity.Client = null;
 		}
 	}
 	
@@ -956,7 +650,7 @@ namespace DBA
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Catalog_Rental", Storage="_Catalog", ThisKey="MovieID", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Movie_Rental", Storage="_Catalog", ThisKey="MovieID", OtherKey="id", IsForeignKey=true)]
 		public Movie Movie
 		{
 			get
@@ -1042,6 +736,312 @@ namespace DBA
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class Client : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private string _Phone;
+		
+		private string _Email;
+		
+		private System.Nullable<long> _IDCode;
+		
+		private string _DocumentNumber;
+		
+		private string _Comment;
+		
+		private bool _VIP;
+		
+		private bool _Problematic;
+		
+		private EntitySet<Rental> _Rentals;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnIDCodeChanging(System.Nullable<long> value);
+    partial void OnIDCodeChanged();
+    partial void OnDocumentNumberChanging(string value);
+    partial void OnDocumentNumberChanged();
+    partial void OnCommentChanging(string value);
+    partial void OnCommentChanged();
+    partial void OnVIPChanging(bool value);
+    partial void OnVIPChanged();
+    partial void OnProblematicChanging(bool value);
+    partial void OnProblematicChanged();
+    #endregion
+		
+		public Client()
+		{
+			this._Rentals = new EntitySet<Rental>(new Action<Rental>(this.attach_Rentals), new Action<Rental>(this.detach_Rentals));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCode")]
+		public System.Nullable<long> IDCode
+		{
+			get
+			{
+				return this._IDCode;
+			}
+			set
+			{
+				if ((this._IDCode != value))
+				{
+					this.OnIDCodeChanging(value);
+					this.SendPropertyChanging();
+					this._IDCode = value;
+					this.SendPropertyChanged("IDCode");
+					this.OnIDCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentNumber")]
+		public string DocumentNumber
+		{
+			get
+			{
+				return this._DocumentNumber;
+			}
+			set
+			{
+				if ((this._DocumentNumber != value))
+				{
+					this.OnDocumentNumberChanging(value);
+					this.SendPropertyChanging();
+					this._DocumentNumber = value;
+					this.SendPropertyChanged("DocumentNumber");
+					this.OnDocumentNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment")]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this.OnCommentChanging(value);
+					this.SendPropertyChanging();
+					this._Comment = value;
+					this.SendPropertyChanged("Comment");
+					this.OnCommentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VIP")]
+		public bool VIP
+		{
+			get
+			{
+				return this._VIP;
+			}
+			set
+			{
+				if ((this._VIP != value))
+				{
+					this.OnVIPChanging(value);
+					this.SendPropertyChanging();
+					this._VIP = value;
+					this.SendPropertyChanged("VIP");
+					this.OnVIPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Problematic")]
+		public bool Problematic
+		{
+			get
+			{
+				return this._Problematic;
+			}
+			set
+			{
+				if ((this._Problematic != value))
+				{
+					this.OnProblematicChanging(value);
+					this.SendPropertyChanging();
+					this._Problematic = value;
+					this.SendPropertyChanged("Problematic");
+					this.OnProblematicChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Rental", Storage="_Rentals", ThisKey="id", OtherKey="ClientID")]
+		public EntitySet<Rental> Rentals
+		{
+			get
+			{
+				return this._Rentals;
+			}
+			set
+			{
+				this._Rentals.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Rentals(Rental entity)
+		{
+			this.SendPropertyChanging();
+			entity.Client = this;
+		}
+		
+		private void detach_Rentals(Rental entity)
+		{
+			this.SendPropertyChanging();
+			entity.Client = null;
 		}
 	}
 }

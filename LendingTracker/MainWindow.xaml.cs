@@ -60,21 +60,21 @@ namespace LendingTracker
         {
             var newCustWindow = new NewCustomerWindow(getClientVM());
             newCustWindow.Owner = this;
-            newCustWindow.Show();
+            newCustWindow.ShowDialog();
         }
 
         private void btnNewMovie_Click(object sender, RoutedEventArgs e)
         {
             var newMovWindow = new NewMovieWindow(getMoviesVM());
             newMovWindow.Owner = this;
-            newMovWindow.Show();
+            newMovWindow.ShowDialog();
         }
 
         private void btnNewRental_Click(object sender, RoutedEventArgs e)
         {
             var newRentalWindow = new AddRentalWindow(getRentalsVM());
             newRentalWindow.Owner = this;
-            newRentalWindow.Show();
+            newRentalWindow.ShowDialog();
         }
 
 
@@ -144,6 +144,31 @@ namespace LendingTracker
             _dataContext.CreateDatabase();
             MessageBox.Show("Uus baas genereeritud");
         }
+
+        private void lstViewClients_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (lstViewClients.SelectedItems.Count == 1)
+            {
+                DBA.Client client = (DBA.Client) lstViewClients.SelectedItem;
+                var newCustWindow = new NewCustomerWindow(getClientVM(), client);
+                newCustWindow.Owner = this;
+                newCustWindow.ShowDialog();
+            }
+      
+        }
+
+        private void lstViewMovies_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (lstViewMovies.SelectedItems.Count == 1)
+            {
+                DBA.Movie movie = (DBA.Movie)lstViewMovies.SelectedItem;
+                var movieWindow = new NewMovieWindow(getMoviesVM(), movie);
+                movieWindow.Owner = this;
+                movieWindow.ShowDialog();
+            }
+      
+        }
+
 
 
       

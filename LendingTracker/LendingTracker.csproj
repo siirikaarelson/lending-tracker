@@ -201,6 +201,7 @@
   <ItemGroup>
     <None Include="Configurations\connections.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup />
