@@ -72,7 +72,7 @@ namespace LendingTracker
 
         private void btnNewRental_Click(object sender, RoutedEventArgs e)
         {
-            var newRentalWindow = new AddRentalWindow(getRentalsVM());
+            var newRentalWindow = new AddRentalWindow(getRentalsVM(), getClientVM(), getMoviesVM());
             newRentalWindow.Owner = this;
             newRentalWindow.ShowDialog();
         }
@@ -143,6 +143,10 @@ namespace LendingTracker
 
             _dataContext.CreateDatabase();
             MessageBox.Show("Uus baas genereeritud");
+
+            
+
+            
         }
 
         private void lstViewClients_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -169,6 +173,26 @@ namespace LendingTracker
       
         }
 
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Button btnAdd = (Button) sender;
+            var test = btnAdd.DataContext;
+
+
+        }
+
+        private void lstViewRentals_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (lstViewRentals.SelectedItems.Count == 1)
+            {
+                DBA.Rental rental = (DBA.Rental)lstViewRentals.SelectedItem;
+                var rentalVideo = new AddRentalWindow(getRentalsVM(), getClientVM(), getMoviesVM(), rental);
+                rentalVideo.Owner = this;
+                rentalVideo.ShowDialog();
+            }
+        }
+
+       
 
 
       

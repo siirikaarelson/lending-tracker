@@ -8,7 +8,7 @@
       <Column Name="Genre" Type="System.String" CanBeNull="true" />
       <Column Name="Quantity" Type="System.Byte" CanBeNull="true" />
       <Column Name="Comment" Type="System.String" CanBeNull="true" />
-      <Column Member="Description" Type="System.String" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" CanBeNull="true" />
       <Association Name="Movie_Rental" Member="Rentals" ThisKey="id" OtherKey="MovieID" Type="Rental" />
     </Type>
   </Table>
@@ -35,15 +35,15 @@
   <Table Name="" Member="Clients">
     <Type Name="Client">
       <Column Name="id" Type="System.Int32" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Member="FirstName" Type="System.String" CanBeNull="false" />
-      <Column Member="LastName" Type="System.String" CanBeNull="false" />
-      <Column Member="Phone" Type="System.String" CanBeNull="true" />
-      <Column Member="Email" Type="System.String" CanBeNull="true" />
-      <Column Member="IDCode" Type="System.Int64" CanBeNull="true" />
-      <Column Member="DocumentNumber" Type="System.String" CanBeNull="true" />
-      <Column Member="Comment" Type="System.String" CanBeNull="true" />
-      <Column Member="VIP" Type="System.Boolean" CanBeNull="false" />
-      <Column Member="Problematic" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" CanBeNull="true" />
+      <Column Name="IDCode" Type="System.Int64" CanBeNull="true" />
+      <Column Name="DocumentNumber" Type="System.String" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" CanBeNull="true" />
+      <Column Name="VIP" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="Problematic" Type="System.Boolean" CanBeNull="false" />
       <Association Name="Client_Rental" Member="Rentals" ThisKey="id" OtherKey="ClientID" Type="Rental" />
     </Type>
   </Table>

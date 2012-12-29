@@ -23,26 +23,73 @@ namespace LendingTracker
     public partial class AddRentalWindow : Window
     {
 
-        private Rental rental;
+        private DBA.Rental _rental;
 
-        private RentalsVM _rentalVM;
+        private RentalsVM _rentalsVM;
+        private ClientVM _clientVM;
+        private MoviesVM _moviesVM;
+     
 
-        public AddRentalWindow(RentalsVM rentalVM)
+        public AddRentalWindow(RentalsVM rentalVM, ClientVM clientVM, MoviesVM moviesVM)
         {
 
             InitializeComponent();
-            rental = new Rental();
+            _rental = new DBA.Rental();
+            this.DataContext = _rental;
 
-            _rentalVM = rentalVM;
-            this.DataContext = rental;
+            _rentalsVM = rentalVM;
+            _clientVM = clientVM;
+            _moviesVM = moviesVM;
+     
+            cboxClient.ItemsSource = _clientVM.getClients();
+            listBoxMovies.ItemsSource = _moviesVM.getMovies();
 
+            _rental.StartDate = DateTime.Now;
+            _rental.EndDate = DateTime.Now.AddDays(7d);
+
+
+
+        }
+
+        public AddRentalWindow(RentalsVM rentalsVM, ClientVM clientVM, MoviesVM moviesVM, DBA.Rental rental)
+        {
+            InitializeComponent();
+
+            this._rentalsVM = rentalsVM;
+            this._clientVM = clientVM;
+            this._moviesVM = moviesVM;
+            this._rental = rental;
+
+            cboxClient.ItemsSource = _clientVM.getClients();
+            listBoxMovies.ItemsSource = _moviesVM.getMovies();
+
+            InitializeComponent();
+            _rental = rental;
+            this.DataContext = _rental;
         }
 
         private void btnAddRental_Click(object sender, RoutedEventArgs e)
         {
-            _rentalVM.saveRental(rental);      
-            Close();
+
+            if (isValid())
+            {
+                _rentalsVM.saveOrUpdateRental(_rental);
+                Close();
+            }
           
+        }
+
+        private bool isValid()
+        {
+            bool isValid = true;
+
+            if (datePickerStartDate.SelectedDate == null || datePickerStartDate.SelectedDate < DateTime.Today)
+            {
+                lblStartDate.Foreground = System.Windows.Media.Brushes.Red;
+                isValid = false;
+            }
+
+            return isValid;
         }
 
         private void btnCancelAddRental_Click(object sender, RoutedEventArgs e)

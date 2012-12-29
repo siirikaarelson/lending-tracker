@@ -13,31 +13,40 @@
                 
             </TabItem>
             <TabItem x:Name="tabClients" Header="Kliendid">
-                <Grid x:Name="gridClients" Height="388" VerticalAlignment="Top">
+
+                <StackPanel>
+                    <Grid x:Name="gridClients"  VerticalAlignment="Top" Background="LightGreen" MinHeight="500" > 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal">
-                            <Button x:Name="btnNewClient" Content="Uus klient" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewClient_Click"/>            
+                            <Button x:Name="btnNewClient" Content="Uus klient" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewClient_Click"/>
                         </StackPanel>
-                       
-                    <ListView x:Name="lstViewClients" Grid.Row="1" Margin="0,0,0,-220" MouseDoubleClick="lstViewClients_MouseDoubleClick">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Width="Auto" Header="Eesnimi" DisplayMemberBinding="{Binding FirstName}"/>
-                                <GridViewColumn Width="Auto" Header="Perenimi" DisplayMemberBinding="{Binding LastName}"/>
-                                <GridViewColumn Width="Auto" Header="Telefon" DisplayMemberBinding="{Binding Phone}"/>
-                                <GridViewColumn Width="Auto" Header="ID kood" DisplayMemberBinding="{Binding IDCode}"/>
-                                <GridViewColumn Width="Auto" Header="VIP" DisplayMemberBinding="{Binding VIP}"/>
-                                <GridViewColumn Width="Auto" Header="Probleemne" DisplayMemberBinding="{Binding Problematic}"/>
-                                <GridViewColumn Width="Auto" Header="Kommentaar" DisplayMemberBinding="{Binding Comment}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                        <ListView x:Name="lstViewClients" Grid.Row="1" MouseDoubleClick="lstViewClients_MouseDoubleClick">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="Auto" Header="Eesnimi" DisplayMemberBinding="{Binding FirstName}"/>
+                                    <GridViewColumn Width="Auto" Header="Perenimi" DisplayMemberBinding="{Binding LastName}"/>
+                                    <GridViewColumn Width="Auto" Header="Telefon" DisplayMemberBinding="{Binding Phone}"/>
+                                    <GridViewColumn Width="Auto" Header="ID kood" DisplayMemberBinding="{Binding IDCode}"/>
+                                    <GridViewColumn Width="Auto" Header="VIP" DisplayMemberBinding="{Binding VIP}"/>
+                                    <GridViewColumn Width="Auto" Header="Probleemne" DisplayMemberBinding="{Binding Problematic}"/>
+                                    <GridViewColumn Width="Auto" Header="Kommentaar" DisplayMemberBinding="{Binding Comment}"/>
+                                    <GridViewColumn>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="btnAdd" Content="Add" Margin="0" VerticalAlignment="Center" Click="btnAdd_Click" CommandParameter="{Binding}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
 
-
-                </Grid>
+                    </Grid>
+                </StackPanel>
+                
             </TabItem>
             <TabItem x:Name="tabMovies" Header="Filmid">
                 <Grid Background="#FFE5E5E5">
@@ -73,15 +82,27 @@
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2">
                         <Button x:Name="btnNewRental" Content="Lisa laentus" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewRental_Click"/>
                     </StackPanel>
-                    <ListView x:Name="lstViewRentals" Grid.Row="1" Grid.ColumnSpan="2">
+                    <ListView x:Name="lstViewRentals" Grid.Row="1" Grid.ColumnSpan="2" MouseDoubleClick="lstViewRentals_MouseDoubleClick" >
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Width="Auto" Header="Client name" DisplayMemberBinding="{Binding ClientFullName}"/>
-                                <GridViewColumn Width="Auto" Header="Movie name" DisplayMemberBinding="{Binding MovieName}"/>
-                                <GridViewColumn Width="Auto" Header="Rent date" DisplayMemberBinding="{Binding StartDate}"/>
-                                <GridViewColumn Width="Auto" Header="End date" DisplayMemberBinding="{Binding EndDate}"/>
-                                <GridViewColumn Width="Auto" Header="VIP" DisplayMemberBinding="{Binding Vip}"/>
-                                <GridViewColumn Width="Auto" Header="Comment" DisplayMemberBinding="{Binding Comment}"/>
+                               
+                                <GridViewColumn Width="Auto" Header="Klient">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>
+                                                <TextBlock.Text >
+                                                    <MultiBinding  StringFormat="{}{0} {1}">
+                                                        <Binding Path="Client.FirstName"/>
+                                                        <Binding Path="Client.LastName"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="Auto" Header="Film" DisplayMemberBinding="{Binding Movie.Title}"/>
+                                <GridViewColumn Width="Auto" Header="Laenutatud" DisplayMemberBinding="{Binding StartDate}"/>
+                                <GridViewColumn Width="Auto" Header="Tagastus" DisplayMemberBinding="{Binding EndDate}"/> 
                             </GridView>
                         </ListView.View>
                     </ListView>

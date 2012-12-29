@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FilteredComboBox.cs" />
     <Compile Include="Data\ObservableRentals.cs" />
     <Compile Include="Data\ObservableMovies.cs" />
     <Compile Include="Data\ObservableClients.cs" />

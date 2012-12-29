@@ -12,7 +12,7 @@ namespace LendingTracker.ViewModel
     {
         private DBA.LINQtoSQLclassesDataContext _dataContext;
         private ObservableRentals _rentalsList;
-       
+
         public RentalsVM(DBA.LINQtoSQLclassesDataContext dataContext)
         {
             _dataContext = dataContext;
@@ -25,9 +25,20 @@ namespace LendingTracker.ViewModel
         }
 
 
-        public void saveRental(Rental rentalTO)
+        internal void saveOrUpdateRental(DBA.Rental _rental)
         {
 
+            if (_rental.id == 0)
+            {
+                _dataContext.Rentals.InsertOnSubmit(_rental);
+            }
+
+            _dataContext.SubmitChanges();
+
+            if (_rental.id == 0)
+            {
+                _rentalsList.Add(_rental);
+            }
         }
     }
 }
