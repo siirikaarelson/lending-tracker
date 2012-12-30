@@ -82,6 +82,7 @@
       <DependentUpon>NewMovieWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ClientsVM.cs" />
+    <Compile Include="ViewModels\UserVM.cs" />
     <Compile Include="ViewModels\MoviesVM.cs" />
     <Compile Include="ViewModels\RentalsVM.cs" />
     <Compile Include="View\AddRentalWindow.xaml.cs">
@@ -192,12 +193,6 @@
       <ProductName>SQL Server Compact 4.0 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LendingTrackerLibrary\LendingTrackerLibrary.csproj">
-      <Project>{e0662ac0-2090-46ee-bafe-57f83116ffc8}</Project>
-      <Name>LendingTrackerLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Configurations\connections.config">

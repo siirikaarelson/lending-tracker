@@ -25,11 +25,7 @@
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="tboxFirstName" Text="{Binding FirstName, Mode=OneWay}"  Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Bottom"/>
-            <Label x:Name="lblFirstName" Grid.Row="0" Grid.Column="0" Content="Eesnimi*" VerticalAlignment="Bottom"/>
-
-            <TextBox x:Name="tboxLastName" Text="{Binding LastName, Mode=OneWay}" Grid.Row="1" Grid.Column="1"/>
-            <Label x:Name="lblLastName" Grid.Row="1" Grid.Column="0" Content="Perenimi*"/>
+            
 
             <DatePicker x:Name="datePickerStartDate" SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Width="201"/>
             <Label x:Name="lblStartDate" Grid.Row="2" Grid.Column="0" Content="Algusaeg*"/>

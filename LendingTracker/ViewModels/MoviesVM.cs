@@ -28,12 +28,49 @@ namespace LendingTracker.ViewModel
         {
             _dataContext.Movies.InsertOnSubmit(movie);
             _dataContext.SubmitChanges();
+
+            if (_moviesList == null)
+            {
+                _moviesList = new ObservableMovies(_dataContext);
+            }
+
             _moviesList.Add(movie);
         }
 
         public void updateMovie(DBA.Movie _movie)
         {
             _dataContext.SubmitChanges();
+        }
+
+
+        public void createSampleMovies()
+        {
+            DBA.Movie movie = new DBA.Movie();
+            movie.Title = "Batman ja Superman";
+            movie.Quantity = 3;
+            movie.Year = 2012;
+            movie.Description = "Superman ja Batman lähevad kala püüdma";
+            movie.Comment = "Hirmus film kohe";
+
+            saveMovie(movie);
+
+            DBA.Movie movie2 = new DBA.Movie();
+            movie2.Title = "Saag 4";
+            movie2.Quantity = 1;
+            movie2.Year = 2011;
+            movie2.Description = "Saeme aga inimesi seal filmi";
+            movie2.Comment = "Hirmus film ka kohe";
+            saveMovie(movie2);
+
+            DBA.Movie movie3 = new DBA.Movie();
+            movie3.Title = "Jaht Venemoodi";
+            movie3.Quantity = 2;
+            movie3.Year = 1945;
+            movie3.Description = "Täitsa hea film";
+            movie3.Comment = "Kalpüügi oma";
+
+            saveMovie(movie3);
+
         }
     }
 }

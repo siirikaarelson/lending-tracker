@@ -24,9 +24,11 @@ namespace LendingTracker
     {
 
         private DBA.LINQtoSQLclassesDataContext _dataContext = new DBA.LINQtoSQLclassesDataContext();
+
         private RentalsVM _rentalsVM;
         private MoviesVM _moviesVM;
         private ClientVM _clientVM;
+        private UserVM _userVM;
 
         
         public MainWindow()
@@ -34,27 +36,6 @@ namespace LendingTracker
             InitializeComponent();
         }
 
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-           DisplayLoginScreen();
-        }
-
-        private void DisplayLoginScreen()
-        {
-            LoginWindow loginWindow = new LoginWindow();
-
-            loginWindow.Owner = this;
-            loginWindow.ShowDialog();
-            if (loginWindow.DialogResult.HasValue && loginWindow.DialogResult.Value)
-            {
-              
-            }
-            else
-            {
-                this.Close();
-            }
-        }
 
         private void btnNewClient_Click(object sender, RoutedEventArgs e)
         {
@@ -109,6 +90,16 @@ namespace LendingTracker
             return _rentalsVM;
         }
 
+        private UserVM getUserVM()
+        {
+            if (_userVM == null)
+            {
+                _userVM = new UserVM(_dataContext);
+            }
+
+            return _userVM;
+        }
+
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (tabClients.IsSelected)
@@ -126,6 +117,11 @@ namespace LendingTracker
                 lstViewRentals.ItemsSource = getRentalsVM().getRentals();
             }
 
+            if (tabSetup.IsSelected)
+            {
+                tabSetup.DataContext = getUserVM().getMainUser();
+            }
+
         }
 
 
@@ -134,6 +130,7 @@ namespace LendingTracker
             _clientVM = null;
             _moviesVM = null;
             _rentalsVM = null;
+            _userVM = null;
 
             if (_dataContext.DatabaseExists())
             {
@@ -142,9 +139,14 @@ namespace LendingTracker
             }
 
             _dataContext.CreateDatabase();
-            MessageBox.Show("Uus baas genereeritud");
+           
 
-            
+
+            getUserVM().createDefaultUser();
+            getClientVM().createSampleData();
+            getMoviesVM().createSampleMovies();
+
+            MessageBox.Show("Uus baas genereeritud koos test andmetega genereeritud");
 
             
         }
@@ -190,6 +192,21 @@ namespace LendingTracker
                 rentalVideo.Owner = this;
                 rentalVideo.ShowDialog();
             }
+        }
+
+        private void btnSavePassword_Click(object sender, RoutedEventArgs e)
+        {
+            if (pboxFirstPassword.Password.Equals(pboxSecondPassword.Password))
+            {
+
+                getUserVM().updatePassword(pboxFirstPassword.Password);
+            }
+            else
+            {
+                lblFirstPassword.Foreground = System.Windows.Media.Brushes.Red; 
+                lblSecondPassword.Foreground = System.Windows.Media.Brushes.Red; 
+            }
+            
         }
 
        

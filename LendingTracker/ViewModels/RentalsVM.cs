@@ -20,22 +20,27 @@ namespace LendingTracker.ViewModel
 
         public ObservableRentals getRentals()
         {
-            _rentalsList = new ObservableRentals(_dataContext);
+            if (_rentalsList == null)
+            {
+                _rentalsList = new ObservableRentals(_dataContext);
+            }
             return _rentalsList;
         }
 
 
         internal void saveOrUpdateRental(DBA.Rental _rental)
         {
+            bool save = false;
 
             if (_rental.id == 0)
             {
                 _dataContext.Rentals.InsertOnSubmit(_rental);
+                save = true;
             }
 
             _dataContext.SubmitChanges();
 
-            if (_rental.id == 0)
+            if (save)
             {
                 _rentalsList.Add(_rental);
             }

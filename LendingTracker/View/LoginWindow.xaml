@@ -54,11 +54,11 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
            
-            <Label Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" Margin="10">Logi sisse</Label>
+            <Label x:Name="lblMainLabel" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" Margin="10">Logi sisse</Label>
             <Label Grid.Column="1" Grid.Row="1">Kasutajanimi</Label>
-            <TextBox  x:Name="txtUserName" Grid.Column="2" Grid.Row="1" ToolTip="Enter Your User Name"/>
+            <TextBox  x:Name="txtUserName" Grid.Column="2" Grid.Row="1" ToolTip="Enter Your User Name" Text="admin"/>
             <Label Grid.Column="1" Grid.Row="2">Parool</Label>
-            <PasswordBox x:Name="txtPassword" Grid.Column ="2" Grid.Row="2" ToolTip="Sisesta parool"/>
+            <PasswordBox x:Name="txtPassword" Grid.Column ="2" Grid.Row="2" ToolTip="Sisesta parool" Password="admin"/>
             <StackPanel Grid.Column="2" Grid.Row="3" Margin="10" HorizontalAlignment="Center"  Orientation="Horizontal">
                 <Button Name="btnCancel" IsCancel="True" Content="Katkesta" Click="btnCancel_Click">
                    

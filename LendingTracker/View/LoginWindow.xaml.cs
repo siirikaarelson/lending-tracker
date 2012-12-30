@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LendingTracker.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,23 +20,37 @@ namespace LendingTracker.View
     /// </summary>
     public partial class LoginWindow : Window
     {
+
+        private DBA.LINQtoSQLclassesDataContext _dataContext = new DBA.LINQtoSQLclassesDataContext();
+
+        private UserVM _userVM;
+
         public LoginWindow()
         {
             InitializeComponent();
+             _userVM = new UserVM(_dataContext);
+
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
             this.Close();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            // Write code here to authenticate user
-            // If authenticated, then set DialogResult=true
-            DialogResult = true;
-            this.Close();
+            //if (_userVM.verifyLogin(txtUserName.Text, txtPassword.Password))
+            //{
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            //}
+            //else
+            //{
+            //    lblMainLabel.Content = "Logimine ebaõnnestus!";
+            //    lblMainLabel.Foreground = System.Windows.Media.Brushes.Red;
+            //}
+            
         }
     }
 
