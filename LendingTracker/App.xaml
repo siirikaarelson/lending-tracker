@@ -2,6 +2,6 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:View="clr-namespace:LendingTracker.View" x:Class="LendingTracker.App"
-             StartupUri="View/LoginWindow.xaml">
+             StartupUri="View/LoginWindow.xaml" Startup="createDatabase">
     
 </Application>

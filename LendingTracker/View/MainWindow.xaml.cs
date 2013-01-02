@@ -143,7 +143,7 @@ namespace LendingTracker
 
 
             getUserVM().createDefaultUser();
-            getClientVM().createSampleData();
+            getClientVM().createSampleClients();
             getMoviesVM().createSampleMovies();
 
             MessageBox.Show("Uus baas genereeritud koos test andmetega genereeritud");

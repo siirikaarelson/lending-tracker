@@ -53,7 +53,7 @@ namespace LendingTracker.ViewModel
             _dataContext.SubmitChanges();
         }
 
-        public void createSampleData()
+        public void createSampleClients()
         {
             DBA.Client client = new DBA.Client();
             client.FirstName = "Juhan";

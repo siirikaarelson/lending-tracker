@@ -37,11 +37,24 @@ namespace LendingTracker.ViewModel
             _moviesList.Add(movie);
         }
 
-        public void updateMovie(DBA.Movie _movie)
+        public void updateMovie(DBA.Movie movie)
         {
             _dataContext.SubmitChanges();
         }
 
+        public void deleteMovie(DBA.Movie movie)
+        {
+            if (movie.Rentals == null || movie.Rentals.Count < 1)
+            {
+                _dataContext.Movies.DeleteOnSubmit(movie);
+                _dataContext.SubmitChanges();
+                _moviesList.Remove(movie);
+            }
+            else
+            {
+                throw new InvalidOperationException("Film(id) on välja laenatud! Välja laentatud filmi ei saa kustutada!");
+            }
+        }
 
         public void createSampleMovies()
         {
@@ -60,6 +73,7 @@ namespace LendingTracker.ViewModel
             movie2.Year = 2011;
             movie2.Description = "Saeme aga inimesi seal filmi";
             movie2.Comment = "Hirmus film ka kohe";
+
             saveMovie(movie2);
 
             DBA.Movie movie3 = new DBA.Movie();

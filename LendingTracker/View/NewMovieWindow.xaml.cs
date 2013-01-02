@@ -32,6 +32,7 @@ namespace LendingTracker
             _moviesVM = moviesVM;
             _movie = new DBA.Movie();
             this.DataContext = _movie;
+            
         }
 
         public NewMovieWindow(MoviesVM moviesVM, DBA.Movie movie)
@@ -41,6 +42,8 @@ namespace LendingTracker
             this._movie = movie;
 
             this.DataContext = movie;
+
+          
         }
 
         private void btnSaveMovie_Click(object sender, RoutedEventArgs e)
@@ -100,6 +103,43 @@ namespace LendingTracker
 
 
             return hasError;
+        }
+
+        private void btnCancelMovie_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        { 
+
+            string messageBoxText = "Kas oled kindel, et soovid seda filmi kustutada?";
+            string caption = "Hoiatus!";
+          
+            MessageBoxResult result = MessageBox.Show(messageBoxText, caption, MessageBoxButton.YesNo, 
+                MessageBoxImage.Warning);
+
+            if (result.Equals(MessageBoxResult.Yes))
+            {
+                try
+                {
+                    _moviesVM.deleteMovie(_movie);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    MessageBox.Show(ex.Message, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            this.Close();
+        }
+
+        private void winViewEditMovie_Activated_HideDeleteButton(object sender, EventArgs e)
+        {
+            if ((_movie.Rentals != null && _movie.Rentals.Count > 0 ) || (_movie.id == 0))
+            {
+                btnDelete.Visibility = Visibility.Hidden;
+            } 
         }
     }
 }

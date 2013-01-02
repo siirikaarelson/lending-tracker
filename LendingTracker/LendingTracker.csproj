@@ -74,13 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="FilteredComboBox.cs" />
     <Compile Include="Data\ObservableRentals.cs" />
     <Compile Include="Data\ObservableMovies.cs" />
     <Compile Include="Data\ObservableClients.cs" />
-    <Compile Include="NewMovieWindow.xaml.cs">
-      <DependentUpon>NewMovieWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Helpers\DatabaseHelper.cs" />
     <Compile Include="ViewModels\ClientsVM.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
     <Compile Include="ViewModels\MoviesVM.cs" />
@@ -91,13 +88,15 @@
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NewCustomerWindow.xaml.cs">
       <DependentUpon>NewCustomerWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="View\NewMovieWindow.xaml.cs">
+      <DependentUpon>NewMovieWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -107,11 +106,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LINQtoSQLclasses.dbml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="NewMovieWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\NewMovieWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

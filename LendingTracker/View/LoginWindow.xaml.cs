@@ -39,17 +39,17 @@ namespace LendingTracker.View
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            //if (_userVM.verifyLogin(txtUserName.Text, txtPassword.Password))
-            //{
+            if (_userVM.verifyLogin(txtUserName.Text, txtPassword.Password))
+            {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
-            //}
-            //else
-            //{
-            //    lblMainLabel.Content = "Logimine ebaõnnestus!";
-            //    lblMainLabel.Foreground = System.Windows.Media.Brushes.Red;
-            //}
+            }
+            else
+            {
+                lblMainLabel.Content = "Logimine ebaõnnestus!";
+                lblMainLabel.Foreground = System.Windows.Media.Brushes.Red;
+           }
             
         }
     }
