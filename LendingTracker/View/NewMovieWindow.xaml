@@ -4,6 +4,12 @@
         Title="Lisa kataloogi uus film" Height="400" Width="600"
          WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False" Activated="winViewEditMovie_Activated_HideDeleteButton">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFB0C9DE" Offset="0"/>
+            <GradientStop Color="White" Offset="0.688"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid Margin="0,0,2,0">
         <TextBox x:Name="tboxTitle" Text="{Binding Title, Mode=OneWay}" HorizontalAlignment="Left" Height="23" Margin="105,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="475"/>
         <Label x:Name="lblTitle" Content="Pealkiri" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-1.075,-0.269"/>

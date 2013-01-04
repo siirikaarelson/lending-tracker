@@ -8,10 +8,16 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TabControl HorizontalAlignment="Left" MinHeight="550" MinWidth="750"  VerticalAlignment="Top" Margin="0,0,0,0" Grid.ColumnSpan="2" SelectionChanged="TabControl_SelectionChanged">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFB0C9DE" Offset="0"/>
+                    <GradientStop Color="White" Offset="0.688"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
             <TabItem x:Name="tabClients" Header="Kliendid">
 
                 <StackPanel>
-                    <Grid x:Name="gridClients"  VerticalAlignment="Top" Background="LightGreen" MinHeight="500" > 
+                    <Grid x:Name="gridClients"  VerticalAlignment="Top" Background="LightGreen" MinHeight="500" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="5*"/>
@@ -20,6 +26,12 @@
                             <Button x:Name="btnNewClient" Content="Uus klient" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewClient_Click"/>
                         </StackPanel>
                         <ListView x:Name="lstViewClients" Grid.Row="1" MouseDoubleClick="lstViewClients_MouseDoubleClick">
+                            <ListView.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFB0C9DE" Offset="0"/>
+                                    <GradientStop Color="White" Offset="0.688"/>
+                                </LinearGradientBrush>
+                            </ListView.Background>
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Width="Auto" Header="Eesnimi" DisplayMemberBinding="{Binding FirstName}"/>
@@ -35,10 +47,10 @@
 
                     </Grid>
                 </StackPanel>
-                
+
             </TabItem>
             <TabItem x:Name="tabMovies" Header="Filmid">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FF7BCAF7">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
@@ -47,6 +59,12 @@
                         <Button x:Name="btnNewMovie" Content="Uus film" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewMovie_Click"/>
                     </StackPanel>
                     <ListView x:Name="lstViewMovies" Grid.Row="1" MouseDoubleClick="lstViewMovies_MouseDoubleClick">
+                        <ListView.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFB0C9DE" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.688"/>
+                            </LinearGradientBrush>
+                        </ListView.Background>
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="Auto" Header="Pealkiri" DisplayMemberBinding="{Binding Title}"/>
@@ -59,7 +77,7 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabRentals" Header="Laenutus">
-                <Grid Background="Blue">
+                <Grid Background="#FFF7BF58">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="69*"/>
                         <ColumnDefinition Width="721*"/>
@@ -72,6 +90,12 @@
                         <Button x:Name="btnNewRental" Content="Lisa laentus" Grid.Row="0" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnNewRental_Click"/>
                     </StackPanel>
                     <ListView x:Name="lstViewRentals" Grid.Row="1" Grid.ColumnSpan="2" MouseDoubleClick="lstViewRentals_MouseDoubleClick" >
+                        <ListView.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFB0C9DE" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.688"/>
+                            </LinearGradientBrush>
+                          </ListView.Background>
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="Auto" Header="Klient">
@@ -97,9 +121,9 @@
                     </ListView>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabSetup" Header="Setup">
+            <TabItem x:Name="tabSetup" Header="Setup" Height="22" VerticalAlignment="Top">
                 <Grid>
-                   
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
@@ -107,11 +131,17 @@
 
                     <StackPanel Orientation="Horizontal" Grid.Row="0">
                         <GroupBox Header="Administraatori seaded" MinWidth="300" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="420" Height="182">
+                            <GroupBox.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFB0C9DE" Offset="0"/>
+                                    <GradientStop Color="White" Offset="0.688"/>
+                                </LinearGradientBrush>
+                            </GroupBox.Background>
                             <Grid Margin="0,20,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="5*"/>
-                                 </Grid.ColumnDefinitions>
+                                </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -125,8 +155,6 @@
                                 <Label x:Name="lblSecondPassword" Grid.Row="1" Grid.Column="0" Content="Parool veelkord*" VerticalAlignment="center"  FontWeight="Normal"/>
 
                                 <Button x:Name="btnSavePassword" IsDefault="True" Grid.Row="2" Grid.Column="1" Content="Salvesta parool" HorizontalAlignment="Right"  VerticalAlignment="Top" FontWeight="Normal" Margin="0,4,0,0" Click="btnSavePassword_Click"/>
-
-
                             </Grid>
                         </GroupBox>
                     </StackPanel>
@@ -152,9 +180,6 @@
                             </Grid>
                         </GroupBox-->
                     </StackPanel>
-
-                  
-                   
                 </Grid>
             </TabItem>
         </TabControl>

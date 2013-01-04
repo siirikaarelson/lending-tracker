@@ -42,6 +42,12 @@
             <DropShadowEffect Color="Gray" Opacity=".50" ShadowDepth="16" />
         </Border.Effect>
         <Grid>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFB0C9DE" Offset="0"/>
+                    <GradientStop Color="White" Offset="0.688"/>
+                </LinearGradientBrush>
+              </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="100" />

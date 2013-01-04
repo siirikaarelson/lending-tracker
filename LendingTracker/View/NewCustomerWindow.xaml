@@ -4,9 +4,14 @@
         Title="Lisa uus klient" Height="375" Width="310" 
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False" ResizeMode="NoResize">
-
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFB0C9DE" Offset="0"/>
+            <GradientStop Color="White" Offset="0.688"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        <Grid.ColumnDefinitions>
+       <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
@@ -28,7 +33,7 @@
         <TextBox x:Name="tboxLastName" Text="{Binding LastName, Mode=OneWay}" Grid.Row="1" Grid.Column="1"/>
         <Label x:Name="lblLastName" Grid.Row="1" Grid.Column="0" Content="Perenimi*"/>
 
-        <TextBox x:Name="tboxPhone" Text="{Binding Phone, Mode=OneWay}" Grid.Row="2" Grid.Column="1" Width="200"/>
+        <TextBox x:Name="tboxPhone" Text="{Binding Phone, Mode=OneWay}" Grid.Row="2" Grid.Column="1" Margin="0,0,0,0"/>
         <Label x:Name="lblPhone" Grid.Row="2" Grid.Column="0" Content="Telefon*"/>
 
         <TextBox x:Name="tboxEmail" Text="{Binding Email, Mode=OneWay}" Grid.Row="3"  Grid.Column="1"/>

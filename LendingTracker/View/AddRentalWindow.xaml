@@ -4,34 +4,39 @@
         Title="Lisa rent" MinHeight="500" MinWidth="600" 
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
-        SizeToContent="WidthAndHeight" Topmost="True">
-   
-    <Grid>
+        SizeToContent="WidthAndHeight" Topmost="True" Width="544.776" Height="488.06">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFB0C9DE" Offset="0"/>
+            <GradientStop Color="White" Offset="0.688"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid HorizontalAlignment="Left" Width="590">
 
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="200"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="25"/>
-            </Grid.RowDefinitions>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
 
-            <DatePicker x:Name="datePickerStartDate" SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Width="201"/>
-            <Label x:Name="lblStartDate" Grid.Row="2" Grid.Column="0" Content="Algusaeg*"/>
 
-            <DatePicker x:Name="datePickerEndDate" SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" Width="201"/>
-             <Label x:Name="lblEndDate" Grid.Row="3" Grid.Column="0" Content="Lõppaeg*"/>
+        <DatePicker x:Name="datePickerStartDate" SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Width="201"/>
+        <Label x:Name="lblStartDate" Grid.Row="2" Grid.Column="0" Content="Algusaeg*"/>
+
+        <DatePicker x:Name="datePickerEndDate" SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" Width="201"/>
+        <Label x:Name="lblEndDate" Grid.Row="3" Grid.Column="0" Content="Lõppaeg*"/>
 
 
         <ComboBox x:Name="cboxClient" SelectedItem="{Binding Client}" Grid.Column="1" HorizontalAlignment="Left" Margin="48,2,0,0" Grid.Row="5" VerticalAlignment="Top" Width="143">
@@ -64,14 +69,8 @@
         </ListBox>
 
 
-        <Button x:Name="btnCancel" Grid.Row="9" Grid.Column="1" Content="Tühista" Click="btnCancelAddRental_Click" Width="50" HorizontalAlignment="Right" Margin="0,154,-215,-154"/>
-        <Button x:Name="btnSave" IsDefault="True" Grid.Row="9" Grid.Column="1" Content="Lisa" Click="btnAddRental_Click" Width="80" HorizontalAlignment="Center" Margin="211,141,-90,-141"/>
-      
-
-
-
-
-
+        <Button x:Name="btnCancel" Grid.Row="9" Grid.Column="1" Content="Tühista" Click="btnCancelAddRental_Click" Width="50" HorizontalAlignment="Right" Margin="0,120,-91,-120"/>
+        <Button x:Name="btnSave" IsDefault="True" Grid.Row="9" Grid.Column="1" Content="Lisa" Click="btnAddRental_Click" Width="80" HorizontalAlignment="Center" Margin="121,120,0,-120"/>
 
 
     </Grid>
